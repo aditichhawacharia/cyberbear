@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Password Strength Awareness & Protection</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Icon CSS Files -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+
+    <!--  Main Logo File -->
+    <link rel="icon" href="assets/favicon.png" />
+
+    <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: #444444;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+      }
+
+      .center-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .about .content {
+        margin: auto;
+        width: 90%;
+        max-width: 1200px;
+        padding: 20px;
+      }
+
+      .about .content h2 {
+        font-weight: 700;
+        font-size: 34px;
+        line-height: 50px;
+        margin-bottom: 20px;
+        color: #fbae1f;
+        text-align: center;
+      }
+
+      .about .content h3 {
+        font-weight: 500;
+        line-height: 32px;
+        font-size: 18px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .about .content h4 {
+        font-weight: 600;
+        font-size: 20px;
+        color: #fbae1f;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        border-left: 4px solid #fbae1f;
+        padding-left: 15px;
+      }
+
+      .about .content ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 25px;
+      }
+
+      .about .content ul li {
+        padding: 10px 0 0 28px;
+        position: relative;
+        margin-bottom: 8px;
+      }
+
+      .about .content ul i {
+        left: 0;
+        top: 7px;
+        position: absolute;
+        font-size: 20px;
+        color: #fbae1f;
+      }
+
+      .about .content p:last-child {
+        margin-bottom: 0;
+      }
+
+      .password-demo {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-left: 5px solid #fbae1f;
+      }
+
+      .password-example {
+        font-family: 'Courier New', monospace;
+        background: #f8f9fa;
+        padding: 12px;
+        border-radius: 5px;
+        margin: 10px 0;
+        border: 1px solid #e9ecef;
+      }
+
+      .strength-weak { color: #dc3545; font-weight: bold; }
+      .strength-medium { color: #fd7e14; font-weight: bold; }
+      .strength-strong { color: #28a745; font-weight: bold; }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .info-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-top: 4px solid #fbae1f;
+        transition: transform 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .info-card h5 {
+        color: #fbae1f;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-card i {
+        font-size: 24px;
+      }
+
+      .warning-box {
+        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        border: 1px solid #ffc107;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 5px solid #ffc107;
+      }
+
+      .warning-box h5 {
+        color: #856404;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .tip-box {
+        background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+        border: 1px solid #17a2b8;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 5px solid #17a2b8;
+      }
+
+      .tip-box h5 {
+        color: #0c5460;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+      }
+
+      /* Responsive Styles */
+      @media only screen and (max-width: 768px) {
+        .about .content {
+          width: 95%;
+        }
+        
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media only screen and (max-width: 425px) {
+        .about .content h2 {
+          font-size: 24px;
+          line-height: 32px;
+        }
+        .about .content h3 {
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Barlow|Tomorrow:400,700&display=swap");
+
+      :root {
+        --yellow-color: #ffa500;
+        --red-color: #ff003c;
+        --black-color: #050a0e;
+        --blue-color: #00f0ff;
+        --white-color: #fafafa;
+      }
+
+      .btn {
+        width: 230px;
+        height: 60px;
+        border: 0;
+        outline: none;
+        background-color: var(--red-color);
+        cursor: pointer;
+        position: relative;
+        font-family: Tomorrow, sans-serif;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--black-color);
+        clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+      }
+
+      .btn__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background-color: var(--yellow-color);
+        clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+      }
+
+      .btn--secondary {
+        background-color: var(--white-color);
+      }
+
+      .btn--secondary .btn__content {
+        background-color: var(--red-color);
+        color: var(--white-color);
+      }
+
+      .btn__label {
+        font-size: 0.4rem;
+        position: absolute;
+        bottom: -1px;
+        right: 8%;
+        padding: 0 5px;
+        background-color: var(--yellow-color);
+        z-index: 3;
+        border-left: 1px solid var(--blue-color);
+      }
+
+      .btn--secondary .btn__label {
+        background-color: var(--white-color);
+        color: var(--black-color);
+      }
+
+      .btn__glitch {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--yellow-color);
+        filter: drop-shadow(-2px 3px #67e3f3) drop-shadow(-1px -3px #02d8f3)
+          drop-shadow(2px 1px #02d8f3);
+      }
+
+      .btn--secondary .btn__glitch {
+        background-color: var(--red-color);
+      }
+
+      .btn:hover .btn__glitch,
+      .btn:hover .btn__content::after,
+      .btn:focus .btn__glitch,
+      .btn:focus .btn__content::after {
+        display: block;
+        animation: glitch-animation 2s linear 0s infinite;
+      }
+
+      /* secret trick */
+      @keyframes glitch-animation {
+        0% {
+          opacity: 1;
+          transform: translateZ(0);
+          clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+        }
+
+        2% {
+          clip-path: polygon(0 78%, 100% 78%, 100% 100%, 0 100%);
+          transform: translate(-5px);
+        }
+
+        6% {
+          clip-path: polygon(0 78%, 100% 78%, 100% 100%, 0 100%);
+          transform: translate(5px);
+        }
+
+        8% {
+          clip-path: polygon(0 78%, 100% 78%, 100% 100%, 0 100%);
+          transform: translate(-5px);
+        }
+
+        9% {
+          clip-path: polygon(0 78%, 100% 78%, 100% 100%, 0 100%);
+          transform: translate(0);
+        }
+
+        10% {
+          clip-path: polygon(0 54%, 100% 54%, 100% 44%, 0 44%);
+          transform: translate3d(5px, 0, 0);
+        }
+
+        13% {
+          clip-path: polygon(0 54%, 100% 54%, 100% 44%, 0 44%);
+          transform: translateZ(0);
+        }
+
+        13.1% {
+          clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+          transform: translate3d(5px, 0, 0);
+        }
+
+        15% {
+          clip-path: polygon(0 60%, 100% 60%, 100% 40%, 0 40%);
+          transform: translate3d(5px, 0, 0);
+        }
+
+        20% {
+          clip-path: polygon(0 60%, 100% 60%, 100% 40%, 0 40%);
+          transform: translate3d(-5px, 0, 0);
+        }
+
+        20.1% {
+          clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+          transform: translate3d(5px, 0, 0);
+        }
+
+        25% {
+          clip-path: polygon(0 85%, 100% 85%, 100% 40%, 0 40%);
+          transform: translate3d(5px, 0, 0);
+        }
+
+        30% {
+          clip-path: polygon(0 85%, 100% 85%, 100% 40%, 0 40%);
+          transform: translate3d(-5px, 0, 0);
+        }
+
+        30.1% {
+          clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        }
+
+        35% {
+          clip-path: polygon(0 63%, 100% 63%, 100% 80%, 0 80%);
+          transform: translate(-5px);
+        }
+
+        40% {
+          clip-path: polygon(0 63%, 100% 63%, 100% 80%, 0 80%);
+          transform: translate(5px);
+        }
+
+        45% {
+          clip-path: polygon(0 63%, 100% 63%, 100% 80%, 0 80%);
+          transform: translate(-5px);
+        }
+
+        50% {
+          clip-path: polygon(0 63%, 100% 63%, 100% 80%, 0 80%);
+          transform: translate(0);
+        }
+
+        55% {
+          clip-path: polygon(0 10%, 100% 10%, 100% 0, 0 0);
+          transform: translate3d(5px, 0, 0);
+        }
+
+        60% {
+          clip-path: polygon(0 10%, 100% 10%, 100% 0, 0 0);
+          transform: translateZ(0);
+          opacity: 1;
+        }
+
+        60.1% {
+          clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+          opacity: 1;
+        }
+
+        to {
+          clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+          opacity: 1;
+        }
+      }
+      .backButton-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px; /* Adjust size as needed */
+            height: 40px; /* Adjust size as needed */
+            cursor: pointer;
+            z-index: 1000; /* Ensure it is on top of other elements */
+          }
+    </style>
+  </head>
+
+  <body>
+    <a href="../../index.html">
+      <img src="../../public/back_button.png" alt="Back Icon" class="backButton-icon" id="backButton-icon">
+    </a>
+    <main id="main">
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about">
+        <div class="container">
+          <div class="row content">
+            <div class="col-lg-12">
+              <h2>Complete Password Security & Protection Guide</h2>
+              <h3>
+                Master the art of creating and managing secure passwords to protect your digital life.
+              </h3>
+
+              <div class="password-demo">
+                <h4><i class="ri-shield-line"></i> Password Strength Examples</h4>
+                <div class="password-example">
+                  <span class="strength-weak">Weak:</span> password123 - <em>Easily guessable, common word + numbers</em>
+                </div>
+                <div class="password-example">
+                  <span class="strength-medium">Medium:</span> MyDog2021! - <em>Personal info, but includes symbols</em>
+                </div>
+                <div class="password-example">
+                  <span class="strength-strong">Strong:</span> K7#mP9$xL2@vN4! - <em>Random mix of characters, 15+ characters</em>
+                </div>
+                <div class="password-example">
+                  <span class="strength-strong">Passphrase:</span> Coffee!Mountain$Eagle9Train - <em>Long, memorable, with symbols</em>
+                </div>
+              </div>
+
+              <div class="info-grid">
+                <div class="info-card">
+                  <h5><i class="ri-key-line"></i>Essential Password Rules</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Minimum 12-16 characters (longer is better)</li>
+                    <li><i class="ri-check-double-line"></i>Mix uppercase and lowercase letters</li>
+                    <li><i class="ri-check-double-line"></i>Include numbers and special symbols</li>
+                    <li><i class="ri-check-double-line"></i>Avoid dictionary words and common patterns</li>
+                    <li><i class="ri-check-double-line"></i>Never reuse passwords across accounts</li>
+                  </ul>
+                </div>
+
+                <div class="info-card">
+                  <h5><i class="ri-forbid-line"></i>What to Avoid</h5>
+                  <ul>
+                    <li><i class="ri-close-line" style="color: #dc3545;"></i>Personal information (birthdays, names, addresses)</li>
+                    <li><i class="ri-close-line" style="color: #dc3545;"></i>Common passwords (password, 123456, qwerty)</li>
+                    <li><i class="ri-close-line" style="color: #dc3545;"></i>Sequential characters (abc123, 789xyz)</li>
+                    <li><i class="ri-close-line" style="color: #dc3545;"></i>Keyboard patterns (asdf, qwert)</li>
+                    <li><i class="ri-close-line" style="color: #dc3545;"></i>Simple substitutions (@ for a, 3 for e)</li>
+                  </ul>
+                </div>
+
+                <div class="info-card">
+                  <h5><i class="ri-tools-line"></i>Password Manager Benefits</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Generate cryptographically secure passwords</li>
+                    <li><i class="ri-check-double-line"></i>Store unlimited unique passwords safely</li>
+                    <li><i class="ri-check-double-line"></i>Auto-fill login credentials securely</li>
+                    <li><i class="ri-check-double-line"></i>Sync across all your devices</li>
+                    <li><i class="ri-check-double-line"></i>Alert you to compromised passwords</li>
+                  </ul>
+                </div>
+
+                <div class="info-card">
+                  <h5><i class="ri-shield-check-line"></i>Multi-Factor Authentication (MFA)</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Enable 2FA/MFA on all important accounts</li>
+                    <li><i class="ri-check-double-line"></i>Use authenticator apps (Google, Authy, Microsoft)</li>
+                    <li><i class="ri-check-double-line"></i>Avoid SMS-based 2FA when possible</li>
+                    <li><i class="ri-check-double-line"></i>Keep backup codes in a secure location</li>
+                    <li><i class="ri-check-double-line"></i>Consider hardware security keys for maximum protection</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="warning-box">
+                <h5><i class="ri-alarm-warning-line"></i>Critical Security Warnings</h5>
+                <ul>
+                  <li><i class="ri-alert-line" style="color: #856404;"></i><strong>Data Breaches:</strong> Major companies get hacked regularly. Unique passwords limit damage to single accounts.</li>
+                  <li><i class="ri-alert-line" style="color: #856404;"></i><strong>Password Reuse:</strong> Using the same password everywhere means one breach compromises all your accounts.</li>
+                  <li><i class="ri-alert-line" style="color: #856404;"></i><strong>Phishing Attacks:</strong> Criminals create fake login pages to steal credentials. Always verify website URLs.</li>
+                  <li><i class="ri-alert-line" style="color: #856404;"></i><strong>Shoulder Surfing:</strong> Be aware of people watching you type passwords in public spaces.</li>
+                </ul>
+              </div>
+
+              <h4><i class="ri-lightbulb-line"></i>Advanced Password Strategies</h4>
+              
+              <div class="tip-box">
+                <h5><i class="ri-magic-line"></i>Passphrase Method</h5>
+                <p>Create memorable yet strong passwords using random words combined with numbers and symbols:</p>
+                <ul>
+                  <li><i class="ri-arrow-right-line"></i>Choose 4-6 unrelated words: "Elephant", "Guitar", "Rainbow", "Clock"</li>
+                  <li><i class="ri-arrow-right-line"></i>Add numbers and symbols: "Elephant7Guitar#Rainbow2Clock!"</li>
+                  <li><i class="ri-arrow-right-line"></i>Result: Long, strong, and relatively easy to remember</li>
+                </ul>
+              </div>
+
+              <div class="info-grid">
+                <div class="info-card">
+                  <h5><i class="ri-refresh-line"></i>Password Rotation</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Change passwords immediately after known breaches</li>
+                    <li><i class="ri-check-double-line"></i>Update critical account passwords every 6-12 months</li>
+                    <li><i class="ri-check-double-line"></i>Don't rotate passwords unnecessarily (creates weaker passwords)</li>
+                    <li><i class="ri-check-double-line"></i>Focus on strength over frequent changes</li>
+                  </ul>
+                </div>
+
+                <div class="info-card">
+                  <h5><i class="ri-eye-line"></i>Recognizing Threats</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Suspicious login attempt notifications</li>
+                    <li><i class="ri-check-double-line"></i>Unexpected password reset emails</li>
+                    <li><i class="ri-check-double-line"></i>Fake websites with slightly wrong URLs</li>
+                    <li><i class="ri-check-double-line"></i>Urgent security alerts requesting immediate action</li>
+                  </ul>
+                </div>
+
+                <div class="info-card">
+                  <h5><i class="ri-safe-line"></i>Emergency Preparedness</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Keep emergency access codes offline and secure</li>
+                    <li><i class="ri-check-double-line"></i>Maintain updated contact info for account recovery</li>
+                    <li><i class="ri-check-double-line"></i>Know how to report compromised accounts quickly</li>
+                    <li><i class="ri-check-double-line"></i>Have backup authentication methods ready</li>
+                  </ul>
+                </div>
+
+                <div class="info-card">
+                  <h5><i class="ri-team-line"></i>Workplace Security</h5>
+                  <ul>
+                    <li><i class="ri-check-double-line"></i>Never share work passwords with colleagues</li>
+                    <li><i class="ri-check-double-line"></i>Use separate passwords for personal and work accounts</li>
+                    <li><i class="ri-check-double-line"></i>Follow company password policies and training</li>
+                    <li><i class="ri-check-double-line"></i>Report security incidents immediately</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h4><i class="ri-question-line"></i>Password Security Myths Debunked</h4>
+              <div class="password-demo">
+                <p><strong>Myth:</strong> "I need to change my password every 30 days"</p>
+                <p><strong>Reality:</strong> Frequent mandatory changes often lead to weaker passwords. Change passwords when there's a reason (breach, suspicious activity) rather than on a schedule.</p>
+                
+                <p><strong>Myth:</strong> "Complex passwords with symbols are always better than long passphrases"</p>
+                <p><strong>Reality:</strong> Length is often more important than complexity. "CorrectHorseBatteryStaple" is stronger than "P@ssw0rd1"</p>
+                
+                <p><strong>Myth:</strong> "Password managers are risky because they're a single point of failure"</p>
+                <p><strong>Reality:</strong> Reputable password managers use strong encryption and are far safer than reusing passwords or writing them down.</p>
+              </div>
+
+              <div class="tip-box">
+                <h5><i class="ri-checkbox-line"></i>Quick Security Checklist</h5>
+                <ul>
+                  <li><i class="ri-checkbox-line"></i>✓ Using unique passwords for every account</li>
+                  <li><i class="ri-checkbox-line"></i>✓ Password manager installed and configured</li>
+                  <li><i class="ri-checkbox-line"></i>✓ Multi-factor authentication enabled on critical accounts</li>
+                  <li><i class="ri-checkbox-line"></i>✓ Regular security checkups and breach monitoring</li>
+                  <li><i class="ri-checkbox-line"></i>✓ Emergency recovery codes stored securely offline</li>
+                  <li><i class="ri-checkbox-line"></i>✓ Educated about current phishing and social engineering tactics</li>
+                </ul>
+              </div>
+
+              <div class="button-container">
+                <button
+                  onclick="window.location.href='../../index_levels/index-level4.html';"
+                  class="btn"
+                >
+                  <span class="btn__content">Continue to Level 4</span>
+                  <span class="btn__glitch"></span>
+                  <span class="btn__label">r25</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Section -->
+    </main>
+    <!-- End #main -->
+  </body>
+</html>

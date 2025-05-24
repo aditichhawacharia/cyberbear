@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Voucher</title>
+    <link rel="stylesheet" href="css/amazon.css">
+    <link rel="shortcut icon" href="assets/amazon_logo.png" type="image/x-icon">
+    <style>
+        #phishing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #phishing-email {
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Comic Sans MS', cursive;
+            color: blue;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        button {
+            font-family: 'Comic Sans MS', cursive;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #claim-button {
+            background-color: limegreen;
+            color: white;
+        }
+
+        #claim-button-red {
+            background-color: red;
+            color: white;
+        }
+
+        h3 {
+            color: red;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="phishing-container">
+        <div id="phishing-email">
+            <h3>Note: This is just part of a fun game and lesson! It's not real. Always choose strong passwords!</h3>
+
+
+            <h2>Sam Needs Your Help! What Should He Do?</h2>
+
+              <p>
+                Sam wants to create a new password for his gaming account after getting hacked. 
+                He's asking YOU to help him choose! <br><br>
+                
+                <strong>Option 1:</strong> Use "password123" - it's easy to remember! 😊<br>
+                <strong>Option 2:</strong> Use "MyBear2024!1010" - it's longer but harder to remember 🤔
+            </p>
+
+
+            <button onclick="location.href='danger.html'" id="claim-button">Choose Password123</button>
+            <button onclick="location.href='continue.html'" id="claim-button-red">Choose MyBear2024!1010</button>
+        </div>
+    </div>
+</body>
+
+
+</html>
