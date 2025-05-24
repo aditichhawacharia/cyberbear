@@ -35,11 +35,6 @@ CyberBear is our capstone project for Headstarter AI.
 - **Educational Institutions**: Interactive modules integrate easily into curricula, enabling educators to provide hands-on cybersecurity education for students.
 - **Businesses**: CyberBear offers tailored training programs that educate employees on cybersecurity best practices, bolstering organizational security.
 
-## Setup and Installation
-1. **Clone the Repository**:
-    ```bash
-   git clone https://github.com/Vinay-Khanagavi/Cyberbear.github.io.git
-    ```
 ## Join Our Community
 Join our Discord community to stay updated, get support, and connect with other users and contributors:
 
