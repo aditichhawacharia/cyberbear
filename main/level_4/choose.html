@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Voucher</title>
+    <link rel="stylesheet" href="css/amazon.css">
+    <link rel="shortcut icon" href="assets/amazon_logo.png" type="image/x-icon">
+    <style>
+        #phishing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #phishing-email {
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Comic Sans MS', cursive;
+            color: blue;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        button {
+            font-family: 'Comic Sans MS', cursive;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #claim-button {
+            background-color: limegreen;
+            color: white;
+        }
+
+        #claim-button-red {
+            background-color: red;
+            color: white;
+        }
+
+        h3 {
+            color: red;
+            font-family: 'Arial', sans-serif;
+        }
+
+        ul {
+            text-align: left;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="phishing-container">
+        <div id="phishing-email">
+            <h3>Note: This is just part of a fun game and lesson! It's not real. Never respond to strangers online — it isn't normal, it's bad and dangerous behavior!</h3>
+
+            <h2>Sam Needs Your Help! What Should He Do?</h2>
+
+            <p>
+                After going viral online and getting many views and followers, numerous people start messaging Sam and leaving comments asking him to:
+            </p>
+            <ul>
+                <li>Talk to them privately</li>
+                <li>Send selfies of his face</li>
+                <li>Meet up in person</li>
+                <li>Reveal more personal information</li>
+            </ul>
+
+            <p><strong>What should Sam do?</strong></p>
+
+            <p><strong>Option 1:</strong> Talk to them and send content — it might make him more popular! 😬</p>
+            <p><strong>Option 2:</strong> Stay at home, ignore the messages, and block/report their comments — better to be safe! ✅</p>
+
+            <button onclick="location.href='slide5.html'" id="claim-button">Choose Option 1</button>
+            <button onclick="location.href='continue.html'" id="claim-button-red">Choose Option 2</button>
+        </div>
+    </div>
+</body>
+
+</html>
