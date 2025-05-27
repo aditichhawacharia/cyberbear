@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Voucher</title>
+    <link rel="stylesheet" href="css/amazon.css">
+    <link rel="shortcut icon" href="assets/amazon_logo.png" type="image/x-icon">
+    <style>
+        #phishing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #phishing-email {
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Comic Sans MS', cursive;
+            color: blue;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        button {
+            font-family: 'Comic Sans MS', cursive;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #claim-button {
+            background-color: limegreen;
+            color: white;
+        }
+
+        #claim-button-red {
+            background-color: red;
+            color: white;
+        }
+
+        h3 {
+            color: red;
+            font-family: 'Arial', sans-serif;
+        }
+
+        ul {
+            text-align: left;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="phishing-container">
+        <div id="phishing-email">
+            <h3>Note: This is just part of a fun game and lesson! It's not real. Don’t believe everything you see online — always check if it’s true!</h3>
+
+            <h2>Sam Needs Your Help! Is This Real?</h2>
+
+            <p>
+                Sam saw a viral video that says:  
+                <em>"If you microwave a lemon and record it, it unlocks secret phone features!"</em> 🍋📱  
+                Thousands of people are posting videos doing it — and it’s trending everywhere!
+            </p>
+
+            <p>
+                The video looks exciting and even has someone claiming it helped them “hack their phone” and get secret games for free.
+            </p>
+
+            <p><strong>What should Sam do?</strong></p>
+
+            <p><strong>Option 1:</strong> Believe the video and try it himself — it must be true if so many people are doing it, right?</p>
+            <p><strong>Option 2:</strong> Do a fact-check using a safe source (like Google, Snopes, or asking a trusted adult) </p>
+
+            <button onclick="location.href='try-hoax.html'" id="claim-button">Choose Option 1</button>
+            <button onclick="location.href='fact-check-win.html'" id="claim-button-red">Choose Option 2</button>
+        </div>
+    </div>
+</body>
+
+
+</html>

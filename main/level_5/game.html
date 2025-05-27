@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth or Trap? - Detective Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .game-title {
+            font-size: 2.5em;
+            color: #4a5568;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .detective-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .score-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .score-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .scenario-container {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 2px dashed #667eea;
+            position: relative;
+        }
+        
+        .scenario-title {
+            font-size: 1.5em;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .fake-post {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .investigation-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tool-button {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .tool-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .tool-button:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .investigation-result {
+            background: #fff5f5;
+            border: 2px solid #fed7d7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .investigation-result.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .final-decision {
+            background: #f0fff4;
+            border: 3px solid #9ae6b4;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .decision-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .decision-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .truth-btn {
+            background: linear-gradient(45deg, #48bb78, #38a169);
+            color: white;
+        }
+        
+        .trap-btn {
+            background: linear-gradient(45deg, #f56565, #e53e3e);
+            color: white;
+        }
+        
+        .decision-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .result-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-align: center;
+            display: none;
+        }
+        
+        .result-popup.show {
+            display: block;
+            animation: popIn 0.5s ease-out;
+        }
+        
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .next-case-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🕵️ Truth or Trap? 🔍</h1>
+            <div class="detective-badge">🏆 Junior Detective</div>
+        </div>
+        
+        <div class="score-board">
+            <div class="score-item">
+                <div class="score-number" id="correct-score">0</div>
+                <div>Solved Cases</div>
+            </div>
+            <div class="score-item">
+                <div class="score-number" id="current-case">1</div>
+                <div>Current Case</div>
+            </div>
+            <div class="score-item">
+                <div class="score-number" id="investigation-tools">0</div>
+                <div>Tools Used</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        
+        <div class="scenario-container" id="scenario">
+            <!-- Scenario content will be loaded here -->
+        </div>
+        
+        <div class="investigation-tools" id="tools">
+            <!-- Investigation tools will be loaded here -->
+        </div>
+        
+        <div class="final-decision" id="decision-area" style="display: none;">
+            <h3>🎯 Make Your Detective Decision!</h3>
+            <p>Based on your investigation, what do you think?</p>
+            <div class="decision-buttons">
+                <button class="decision-btn truth-btn" onclick="makeDecision('truth')">✅ This is TRUTH!</button>
+                <button class="decision-btn trap-btn" onclick="makeDecision('trap')">⚠️ This is a TRAP!</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="result-popup" id="result-popup">
+        <!-- Result content will be loaded here -->
+    </div>
+
+    <script>
+        let currentCase = 0;
+        let correctAnswers = 0;
+        let toolsUsed = 0;
+        let investigationComplete = false;
+        
+        const cases = [
+            {
+                title: "🏆 The Amazing Prize Giveaway",
+                content: {
+                    username: "CoolPrizes4U",
+                    post: "🎉 AMAZING GIVEAWAY! 🎉 Win a brand new iPhone 15 Pro! Just like this post and share your personal info in the comments! Winners announced in 1 hour! 📱✨",
+                    details: "Posted 30 minutes ago • 50,000 likes"
+                },
+                tools: [
+                    {
+                        name: "🔍 Check Profile",
+                        result: "This account was created yesterday and has no other posts. The profile picture looks like a stock image."
+                    },
+                    {
+                        name: "📊 Verify Company",
+                        result: "No official company website found. Real giveaways usually come from verified business accounts."
+                    },
+                    {
+                        name: "⚠️ Red Flag Scanner",
+                        result: "ALERT: Asking for personal info in comments is a major red flag! Legitimate contests never do this."
+                    },
+                    {
+                        name: "🕐 Timeline Check",
+                        result: "1-hour deadline is suspicious. Real giveaways usually run for days or weeks."
+                    }
+                ],
+                answer: "trap",
+                explanation: "This is a TRAP! Scammers create fake giveaways to steal personal information. Real companies don't ask for personal info in public comments and give more time for legitimate contests."
+            },
+            {
+                title: "🐾 The Magical Pet Story",
+                content: {
+                    username: "MyPetStories",
+                    post: "My dog learned to talk yesterday! He said 'I love you mom' and now he won't stop chatting! 🐕💬 Has anyone else's pet started talking? #TalkingPets #Amazing",
+                    details: "Posted 2 hours ago • 1,200 likes"
+                },
+                tools: [
+                    {
+                        name: "🧬 Science Check",
+                        result: "Dogs cannot physically speak human words due to their vocal cord structure. They can mimic sounds but not form actual words."
+                    },
+                    {
+                        name: "📰 News Verification",
+                        result: "No scientific reports of dogs learning to speak. This would be major world news if true!"
+                    },
+                    {
+                        name: "🎬 Fake Content Detector",
+                        result: "This type of 'magical pet' story is common clickbait. Often used to get attention and shares."
+                    },
+                    {
+                        name: "👥 Community Response",
+                        result: "Comments show people asking for video proof, but none has been provided by the poster."
+                    }
+                ],
+                answer: "trap",
+                explanation: "This is a TRAP! While dogs are smart and can learn commands, they cannot physically speak human language. This is likely a made-up story for attention and likes."
+            },
+            {
+                title: "🌍 The Environmental News",
+                content: {
+                    username: "GreenNewsDaily",
+                    post: "BREAKING: Scientists discover new recycling method that turns plastic waste into clean energy! This could solve both pollution and energy problems! 🌱⚡ #GreenTech #Environment",
+                    details: "Posted 6 hours ago • 890 likes"
+                },
+                tools: [
+                    {
+                        name: "🔬 Scientific Source Check",
+                        result: "Found multiple research papers from universities about plastic-to-energy conversion. This technology exists and is being developed."
+                    },
+                    {
+                        name: "📺 News Verification",
+                        result: "Several reputable news outlets have reported on similar technologies from companies like Brightmark and Quantafuel."
+                    },
+                    {
+                        name: "🏢 Institution Check",
+                        result: "The account shares news from verified environmental organizations and has a history of accurate reporting."
+                    },
+                    {
+                        name: "📅 Timeline Plausibility",
+                        result: "Plastic-to-energy technology has been in development for years. Recent breakthroughs are realistic."
+                    }
+                ],
+                answer: "truth",
+                explanation: "This is TRUTH! Plastic-to-energy conversion is real technology being developed by scientists and companies worldwide. While still being perfected, it's a legitimate environmental solution."
+            },
+            {
+                title: "💰 The Quick Money Trick",
+                content: {
+                    username: "EasyMoney123",
+                    post: "I made $500 in 5 minutes with this one weird trick! 💸 No work required! Just send me $20 and I'll show you the secret! Message me now! 🤑 #QuickMoney #GetRich",
+                    details: "Posted 1 hour ago • 25 likes"
+                },
+                tools: [
+                    {
+                        name: "🚨 Scam Pattern Recognition",
+                        result: "Classic 'get rich quick' scam pattern. Asking for money upfront is a major red flag."
+                    },
+                    {
+                        name: "💳 Payment Method Check",
+                        result: "Legitimate opportunities don't require upfront payments. This is how scammers operate."
+                    },
+                    {
+                        name: "👤 Profile Investigation",
+                        result: "Account has no real personal information, few followers, and posts only about money-making schemes."
+                    },
+                    {
+                        name: "⭐ Testimonial Verification",
+                        result: "No verifiable reviews or testimonials from real people who have actually made money."
+                    }
+                ],
+                answer: "trap",
+                explanation: "This is a TRAP! This is a classic money scam. Real opportunities to earn money don't require you to pay first. The scammer takes your $20 and disappears!"
+            },
+            {
+                title: "🎓 The School Announcement",
+                content: {
+                    username: "LincolnMiddleSchool",
+                    post: "Reminder: Parent-teacher conferences are next Thursday from 3-7 PM in the main gymnasium. Please sign up for your time slot on the school website. 📚👨‍👩‍👧‍👦 #ParentTeacher",
+                    details: "Posted 3 days ago • 45 likes"
+                },
+                tools: [
+                    {
+                        name: "🏫 School Verification",
+                        result: "Account is verified with school logo and matches official school social media accounts."
+                    },
+                    {
+                        name: "📅 Schedule Check",
+                        result: "Timing matches typical school conference schedules. Posted with appropriate advance notice."
+                    },
+                    {
+                        name: "🔗 Link Verification",
+                        result: "Mentions official school website (doesn't ask to click suspicious links)."
+                    },
+                    {
+                        name: "📝 Content Analysis",
+                        result: "Professional tone, school-appropriate language, contains practical information parents need."
+                    }
+                ],
+                answer: "truth",
+                explanation: "This is TRUTH! This appears to be a legitimate school announcement. It comes from a verified school account, has professional content, and provides practical parent information."
+            }
+        ];
+        
+        function loadCase() {
+            if (currentCase >= cases.length) {
+                showFinalResults();
+                return;
+            }
+            
+            investigationComplete = false;
+            const case_data = cases[currentCase];
+            
+            document.getElementById('current-case').textContent = currentCase + 1;
+            document.getElementById('progress').style.width = ((currentCase / cases.length) * 100) + '%';
+            
+            const scenarioHTML = `
+                <div class="scenario-title">
+                    <span>📋</span>
+                    <span>Case #${currentCase + 1}: ${case_data.title}</span>
+                </div>
+                <div class="fake-post">
+                    <div class="post-header">
+                        <div class="profile-pic">${case_data.content.username.charAt(0)}</div>
+                        <div>
+                            <strong>@${case_data.content.username}</strong><br>
+                            <small>${case_data.content.details}</small>
+                        </div>
+                    </div>
+                    <p>${case_data.content.post}</p>
+                </div>
+                <p><strong>🕵️ Your Mission:</strong> Use your detective tools to investigate this post. Is it TRUTH or a TRAP?</p>
+            `;
+            
+            document.getElementById('scenario').innerHTML = scenarioHTML;
+            
+            const toolsHTML = case_data.tools.map((tool, index) => 
+                `<button class="tool-button" onclick="useTool(${index})" id="tool-${index}">
+                    ${tool.name}
+                </button>`
+            ).join('');
+            
+            document.getElementById('tools').innerHTML = toolsHTML;
+            document.getElementById('decision-area').style.display = 'none';
+            
+            // Clear previous investigation results
+            const existingResults = document.querySelectorAll('.investigation-result');
+            existingResults.forEach(result => result.remove());
+        }
+        
+        function useTool(toolIndex) {
+            const case_data = cases[currentCase];
+            const tool = case_data.tools[toolIndex];
+            const toolButton = document.getElementById(`tool-${toolIndex}`);
+            
+            toolButton.disabled = true;
+            toolButton.style.background = '#cbd5e0';
+            toolsUsed++;
+            document.getElementById('investigation-tools').textContent = toolsUsed;
+            
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'investigation-result';
+            resultDiv.innerHTML = `
+                <h4>${tool.name} Results:</h4>
+                <p>${tool.result}</p>
+            `;
+            
+            document.getElementById('tools').appendChild(resultDiv);
+            setTimeout(() => {
+                resultDiv.classList.add('show');
+            }, 100);
+            
+            // Check if enough tools have been used to make decision
+            const usedTools = document.querySelectorAll('.tool-button:disabled').length;
+            if (usedTools >= 2) {
+                setTimeout(() => {
+                    document.getElementById('decision-area').style.display = 'block';
+                    document.getElementById('decision-area').scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        }
+        
+        function makeDecision(decision) {
+            if (investigationComplete) return;
+            
+            investigationComplete = true;
+            const case_data = cases[currentCase];
+            const isCorrect = decision === case_data.answer;
+            
+            if (isCorrect) {
+                correctAnswers++;
+                document.getElementById('correct-score').textContent = correctAnswers;
+            }
+            
+            showResult(isCorrect, case_data.explanation);
+        }
+        
+        function showResult(isCorrect, explanation) {
+            const resultHTML = `
+                <h2>${isCorrect ? '🎉 Excellent Detective Work!' : '🔍 Good Investigation!'}</h2>
+                <p style="font-size: 1.2em; margin: 15px 0;">
+                    ${isCorrect ? 'You solved the case correctly!' : 'Not quite right this time, but you\'re learning!'}
+                </p>
+                <div style="background: #f7fafc; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <strong>Explanation:</strong><br>
+                    ${explanation}
+                </div>
+                <button class="next-case-btn" onclick="nextCase()">
+                    ${currentCase < cases.length - 1 ? '🔍 Next Case' : '🏆 See Final Results'}
+                </button>
+            `;
+            
+            document.getElementById('result-popup').innerHTML = resultHTML;
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('result-popup').classList.add('show');
+        }
+        
+        function nextCase() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('result-popup').classList.remove('show');
+            currentCase++;
+            loadCase();
+        }
+        
+        function showFinalResults() {
+            const percentage = Math.round((correctAnswers / cases.length) * 100);
+            let badge = '';
+            let message = '';
+            
+            if (percentage >= 80) {
+                badge = '🏆 Master Detective';
+                message = 'Outstanding! You have excellent skills at spotting online traps!';
+            } else if (percentage >= 60) {
+                badge = '🕵️ Detective';
+                message = 'Great job! You\'re getting really good at this!';
+            } else {
+                badge = '🔍 Junior Investigator';
+                message = 'Good start! Keep practicing to become a master detective!';
+            }
+            
+            const finalHTML = `
+                <h2>🎯 Final Detective Report</h2>
+                <div style="font-size: 3em; margin: 20px 0;">${badge}</div>
+                <p style="font-size: 1.2em; margin: 15px 0;">${message}</p>
+                <div style="background: #f7fafc; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <strong>Your Stats:</strong><br>
+                    ✅ Cases Solved Correctly: ${correctAnswers}/${cases.length}<br>
+                    🔧 Investigation Tools Used: ${toolsUsed}<br>
+                    📊 Success Rate: ${percentage}%
+                </div>
+                <div style="background: #e6fffa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <strong>🎓 Remember the Detective Rules:</strong><br>
+                    • Always investigate before believing<br>
+                    • Check who posted the information<br>
+                    • Look for red flags like asking for money or personal info<br>
+                    • Verify with trusted sources<br>
+                    • When in doubt, ask a trusted adult!
+                </div>
+                <button class="next-case-btn" onclick="restartGame()">🔄 Play Again</button>
+                <a href="question.html" class="next-case-btn" style="display: inline-block; text-decoration: none; margin-left: 15px;">➡️ Continue Adventure</a>
+            `;
+            
+            document.getElementById('result-popup').innerHTML = finalHTML;
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('result-popup').classList.add('show');
+        }
+        
+        function restartGame() {
+            currentCase = 0;
+            correctAnswers = 0;
+            toolsUsed = 0;
+            document.getElementById('correct-score').textContent = '0';
+            document.getElementById('investigation-tools').textContent = '0';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('result-popup').classList.remove('show');
+            loadCase();
+        }
+        
+        // Start the game
+        loadCase();
+    </script>
+</body>
+</html>
