@@ -9,16 +9,26 @@
     <link rel="stylesheet" href="css/amazon.css">
     <link rel="shortcut icon" href="assets/FREE GAMEZZ.png" type="image/x-icon">
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto;
+        }
+
         #phishing-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f0f0f0;
+            padding: 20px;
+            overflow: auto;
         }
 
         #phishing-email {
             max-width: 500px;
+            width: 100%;
             padding: 20px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -69,16 +79,9 @@
         <div id="phishing-email">
             <h3>Note: This is just part of a fun game and lesson! It's not real. Always think before downloading apps!</h3>
             <img src="assets/FREE GAMEZZ.png" alt="Image depicting a free games offer" style="max-width: 100%; height: auto;">
-
             <h2>Check Out This Super Cool App! (But Wait...)</h2>
-
-            <p>
-                Hello there! Guess what? You can get an amazing app and enjoy <span style="color: forestgreen;">80%
-                    off</span> on all Prime Games!
-            </p>
-            <p>Sounds too good to be true, right? Before downloading anything, remember: Always check if the app is
-                safe. Don’t fall for sneaky traps!</p>
-
+            <p>Hello there! Guess what? You can get an amazing app and enjoy <span style="color: forestgreen;">80% off</span> on all Prime Games!</p>
+            <p>Sounds too good to be true, right? Before downloading anything, remember: Always check if the app is safe. Don’t fall for sneaky traps!</p>
             <a href="challenge_result.html" class="button" id="claim-button">See What Happens</a>
             <a href="malware/scene.html" class="button" id="claim-button-red">Skip</a>
         </div>

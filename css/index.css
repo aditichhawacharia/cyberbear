@@ -942,3 +942,544 @@ h3,
 p {
   font-family: 'Poppins', sans-serif;
 }
+
+/* Mobile-Responsive CSS Fixes - Complete Solution */
+
+/* Mobile layout fixes */
+@media screen and (max-width: 768px) {
+  /* Fix icon positioning for mobile */
+  .kids-icon {
+    top: 80px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .multiplayer-icon {
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .reward-icon {
+    top: 130px;
+    left: 15px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .video-icon {
+    top: 175px;
+    left: 15px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .music-icon {
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .scroll_top {
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Main homepage container */
+  .homepage {
+    padding: 2rem 1rem 4rem;
+    gap: 1.5rem;
+  }
+
+  .cyber-fit {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /* LEVEL 1 Mobile Layout - Fix ordering and spacing */
+  .frame-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .giphy-1-1 {
+    order: 1;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    min-width: unset;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .frame-wrapper {
+    order: 2;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .level-1-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .cyberfit-cyber-challenges-to-wrapper {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cyberfit-cyber-container {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* LEVEL 2 Mobile Layout - Fix centering and spacing */
+  .giphy-2-1-parent {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .giphy-2-1 {
+    order: 1;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    min-width: unset;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .frame-wrapper1 {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .level-2-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cyberfit-cyber-challenges-to-container {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cyberfit-cyber-container1 {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* LEVEL 3 Mobile Layout - Fix spacing */
+  .frame-parent1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .cyberfit-cyber-challenges-to-frame {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cyberfit-cyber-container2 {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .frame-parent2 {
+    order: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .giphy-3-1 {
+    order: 1;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    min-width: unset;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .frame-wrapper2 {
+    order: 2;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .level-3-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* LEVEL 4 Mobile Layout - Fix spacing */
+  .frame-parent3 {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .giphy-4-1-wrapper {
+    order: 1;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .giphy-4-1 {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    min-width: unset;
+  }
+
+  .frame-wrapper3 {
+    order: 2;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .level-4-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cyberfit-cyber-container3 {
+    order: 3;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* LEVEL 5 Mobile Layout - Fix spacing */
+  .frame-container:last-of-type .frame-parent1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .frame-container:last-of-type .cyberfit-cyber-challenges-to-frame {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .frame-container:last-of-type .frame-parent2 {
+    order: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .frame-container:last-of-type .giphy-1-1 {
+    order: 1;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .frame-container:last-of-type .frame-wrapper2 {
+    order: 2;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Universal level text styling */
+  .level-1,
+  .level-2,
+  .level-3,
+  .level-4 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Universal play button styling */
+  .animation-1716828621477-1,
+  .animation-1716828621477-2,
+  .animation-1716828621477-3,
+  .animation-1716828621477-4 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .animation-1716828621477-1-wrapper,
+  .animation-1716828621477-2-wrapper,
+  .animation-1716828621477-3-wrapper,
+  .animation-1716828621477-4-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Universal description styling */
+  .cyberfit-cyber-container,
+  .cyberfit-cyber-container1,
+  .cyberfit-cyber-container2,
+  .cyberfit-cyber-container3 {
+    font-size: 1rem;
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Reduce section gaps */
+  .frame-container {
+    gap: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  .homepage-child {
+    padding: 0;
+    margin: 0;
+  }
+
+  .homepage-inner {
+    margin-bottom: 0;
+  }
+
+  .frame-parent {
+    gap: 1.2rem;
+  }
+
+  .frame-div {
+    gap: 1.2rem;
+  }
+
+  /* Coming soon section mobile */
+  .homepage div[style*="margin: 20px auto"] {
+    margin: 20px 10px !important;
+    padding: 20px 15px !important;
+    width: calc(100% - 20px) !important;
+  }
+
+  .homepage div[style*="margin: 20px auto"] h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .homepage div[style*="display: flex; flex-wrap: wrap"] {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .homepage div[style*="max-width: 350px"] {
+    width: 100% !important;
+    max-width: none !important;
+    margin-bottom: 15px;
+  }
+}
+
+/* Extra small mobile devices */
+@media screen and (max-width: 480px) {
+  .homepage {
+    padding: 1.5rem 0.5rem 3rem;
+    gap: 1rem;
+  }
+
+  .cyber-fit {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Smaller icons for very small screens */
+  .kids-icon,
+  .multiplayer-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .reward-icon,
+  .video-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .music-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Adjust icon positions */
+  .kids-icon {
+    top: 70px;
+    left: 10px;
+  }
+
+  .multiplayer-icon {
+    top: 10px;
+    left: 10px;
+  }
+
+  .reward-icon {
+    top: 110px;
+    left: 10px;
+  }
+
+  .video-icon {
+    top: 150px;
+    left: 10px;
+  }
+
+  .music-icon {
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Smaller text and elements */
+  .level-1,
+  .level-2,
+  .level-3,
+  .level-4 {
+    font-size: 1.3rem;
+  }
+
+  .cyberfit-cyber-container,
+  .cyberfit-cyber-container1,
+  .cyberfit-cyber-container2,
+  .cyberfit-cyber-container3 {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .animation-1716828621477-1,
+  .animation-1716828621477-2,
+  .animation-1716828621477-3,
+  .animation-1716828621477-4 {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Reduce gaps even more on small screens */
+  .frame-group,
+  .giphy-2-1-parent,
+  .frame-parent1,
+  .frame-parent2,
+  .frame-parent3 {
+    gap: 0.6rem;
+  }
+
+  .level-1-parent,
+  .level-2-parent,
+  .level-3-parent,
+  .level-4-parent {
+    gap: 0.3rem;
+  }
+
+  .frame-container {
+    gap: 1rem;
+  }
+
+  .homepage {
+    gap: 1rem;
+  }
+}
+
+/* Ensure Google Translate is mobile-friendly */
+@media screen and (max-width: 768px) {
+  #google_translate_element {
+    margin: 10px !important;
+    text-align: center;
+  }
+  
+  .goog-te-gadget {
+    font-size: 12px !important;
+  }
+}
