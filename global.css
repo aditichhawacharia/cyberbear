@@ -58,3 +58,57 @@ body {
   --br-31xl: 50px;
 }
 
+/* Floating Translate Button */
+.floating-translate-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 80px; /* Adjust based on chat button position */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #4285f4;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 999;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.floating-translate-btn:hover {
+  background: #3367d6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.floating-translate-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Keep above the chat button */
+#floating-chat-button {
+  bottom: 20px !important;
+}
+
+/* Google Translate Styles (same as before) */
+.hidden-translate {
+  display: none;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+.goog-te-menu-frame {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 8px !important;
+  max-width: 300px !important;
+}

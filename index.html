@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="./css/global.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" />
@@ -18,21 +18,74 @@
     gtag('config', 'G-PMJMSDJVFT');
 
     let isOriginalColor = true;
-    function changebackgroundcolor() 
-    {
-    const container = document.querySelector('.music-icon');
-    if (isOriginalColor) 
-    {
-      container.style.background = 'linear-gradient(90deg, rgb(119,234,253) ,rgb(119,203,253))'; //new gradient
-    } 
-    else 
-    {
-      container.style.background = 'linear-gradient(90deg, rgb(84, 84, 84) ,  rgb(84, 84, 84))';//prevoius gradient
+    function changebackgroundcolor() {
+      const container = document.querySelector('.music-icon');
+      if (isOriginalColor) {
+        container.style.background = 'linear-gradient(90deg, rgb(119,234,253) ,rgb(119,203,253))'; //new gradient
+      } else {
+        container.style.background = 'linear-gradient(90deg, rgb(84, 84, 84) ,  rgb(84, 84, 84))'; //prevoius gradient
+      }
+      isOriginalColor = !isOriginalColor;
     }
-  isOriginalColor = !isOriginalColor;
-} 
-</script>
+  </script>
+  <style>
+    /* Floating Translate Button Styles */
+    .floating-translate-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 80px; /* Positioned above the chat button */
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #4285f4;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
 
+    .floating-translate-btn:hover {
+      background: #3367d6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    .floating-translate-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hidden-translate {
+      display: none;
+    }
+
+    .goog-te-banner-frame {
+      display: none !important;
+    }
+
+    .goog-te-gadget {
+      color: transparent !important;
+    }
+
+    .goog-te-menu-frame {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 8px !important;
+      max-width: 300px !important;
+    }
+
+    @media (max-width: 600px) {
+      .floating-translate-btn {
+        bottom: 70px;
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -40,30 +93,26 @@
     <source src="./audio/back.mp3" type="audio/mpeg">
   </audio>
 
-
   <a href="main/level_2/game/wackthehacker.html">
     <img src="public/reward.png" title="game!" alt="Game Icon" class="reward-icon" id="reward-icon">
   </a>
-
 
   <a href="vids/vid.html">
     <img src="public/video.png" title="video guides" alt="Video Icon" class="video-icon" id="video-icon">
   </a>
 
   <a target="_blank" href="https://create.kahoot.it/share/beginner-cybersecurity-terms/a13ab7e5-c88c-4319-a977-02916d7c9406">
-    <a target="_blank" href="https://create.kahoot.it/share/beginner-cybersecurity-terms/a13ab7e5-c88c-4319-a977-02916d7c9406">
-      <img src="public/multiplayer.png" title="kahoot" alt="Multiplayer Icon" class="multiplayer-icon"
-        id="multiplayer-icon">
-    </a>
+    <img src="public/multiplayer.png" title="kahoot" alt="Multiplayer Icon" class="multiplayer-icon" id="multiplayer-icon">
+  </a>
 
-    <a href="cyberfit.html">
-      <img src="public/kids.png" title="learn!" alt="Kids Icon" class="kids-icon" id="kids-icon">
-    </a>
+  <a href="cyberfit.html">
+    <img src="public/kids.png" title="learn!" alt="Kids Icon" class="kids-icon" id="kids-icon">
+  </a>
 
-    <img src="public/music.png" title="music" alt="Music Icon" class="music-icon" id="music-icon" onclick="changebackgroundcolor()">
+  <img src="public/music.png" title="music" alt="Music Icon" class="music-icon" id="music-icon" onclick="changebackgroundcolor()">
 
-    <div class="homepage">
-      <section class="homepage-inner">
+  <div class="homepage">
+  <section class="homepage-inner">
         <div class="frame-parent">
           <div class="cyber-fit-wrapper">
             <h1 class="cyber-fit">CyberBear</h1>
@@ -223,94 +272,124 @@
       </div>
             
     </div>
-    
-    <footer>
-      <div class="footer">
+        
+  <footer>
+    <div class="footer">
       <div class="row">
-      <a href="https://www.instagram.com/cyberbear.ai"><i class="fa fa-instagram"></i></a>
-      <!--<a href="#"><i class="fa fa-youtube"></i></a> -->
-      <a href="https://www.linkedin.com/company/cyberbear-ai/"><i class="fa fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/cyberbear.ai"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/cyberbear-ai/"><i class="fa fa-linkedin"></i></a>
       </div>
-      
       <div class="row">
-      <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="about_us.html">About Us</a></li>
-      <li><a href="meettheteam.html">Meet The Team</a></li>
-      <li><a href="our_partners.html">Our Partners</a></li>
-      </ul>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="meettheteam.html">Meet The Team</a></li>
+          <li><a href="our_partners.html">Our Partners</a></li>
+        </ul>
       </div>
-       <div class="row">
+      <div class="row">
         CyberBear © 2025 | All Rights Reserved
       </div>
-      </div>
-      </footer>
-      
-    <button class="scroll_top">
-      <img src="public/arrow.png" alt="" id="to_top">
-    </button>
-    <script>
-      const scrollButton = document.querySelector(".scroll_top");
+    </div>
+  </footer>
+  
+  <button class="scroll_top">
+    <img src="public/arrow.png" alt="" id="to_top">
+  </button>
 
-      window.addEventListener("scroll", () => {
-        window.pageYOffset > 100
-          ? scrollButton.classList.add("show-btn")
-          : scrollButton.classList.remove("show-btn");
-      });
+  <!-- Floating Translate Button -->
+  <div class="floating-translate-btn" onclick="activateGoogleTranslate()">
+    <span>Translate</span>
+  </div>
 
-      function smoothScrollToTop() {
-        const scrollY = window.pageYOffset;
-        const scrollStep = Math.max(10, Math.floor(scrollY / 20));
-        if (scrollY > 0) {
-          window.scrollBy(0, -scrollStep);
-          requestAnimationFrame(smoothScrollToTop);
-        }
-      }
+  <!-- Google Translate Element -->
+  <div id="google_translate_element" class="hidden-translate"></div>
 
-      // When the button is clicked, scroll to the top smoothly
-      scrollButton?.addEventListener("click", () => {
+  <script>
+    // Scroll to top functionality
+    const scrollButton = document.querySelector(".scroll_top");
+
+    window.addEventListener("scroll", () => {
+      window.pageYOffset > 100
+        ? scrollButton.classList.add("show-btn")
+        : scrollButton.classList.remove("show-btn");
+    });
+
+    function smoothScrollToTop() {
+      const scrollY = window.pageYOffset;
+      const scrollStep = Math.max(10, Math.floor(scrollY / 20));
+      if (scrollY > 0) {
+        window.scrollBy(0, -scrollStep);
         requestAnimationFrame(smoothScrollToTop);
-      });
-    </script>
-    <script>
-      var isPlaying = false;
-      var audio = document.getElementById('background-music');
-      var musicIcon = document.getElementById('music-icon');
-
-      musicIcon.addEventListener('click', function () {
-        if (isPlaying) {
-          audio.pause();
-          isPlaying = false;
-        } else {
-          audio.play().catch(error => {
-            console.log('Error playing audio:', error);
-          });
-          isPlaying = true;
-        }
-      });
-    </script>
-    <script>
-      window.embeddedChatbotConfig = {
-        chatbotId: "iHUFXP4dziHwbqdmgIfl3",
-        domain: "www.chatbase.co"
       }
-    </script>
-    <script src="https://www.chatbase.co/embed.min.js" chatbotId="iHUFXP4dziHwbqdmgIfl3" domain="www.chatbase.co" defer>
-    </script>
-    <!-- Google Translate Element -->
-<div id="google_translate_element" style="margin: 20px;"></div>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'af,ar,hy,az,ba,eu,bn,bs,ca,hr,cs,da,nl,en,eo,et,tl,tlh,fi,fr,gaa,ka,de,el,gu,ht,ha,he,hi,hu,is,id,it,ja,jw,kn,kk,km,ko,ku,ky,la,lv,lt,lb,mk,ml,mn,no,ne,pl,pt,pa,ro,ru,sr,si,sk,sl,es,su,sw,sv,ta,te,th,tl,tr,uk,ur,vi,cy,xh,yi,zu',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
     }
-</script>
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    scrollButton?.addEventListener("click", () => {
+      requestAnimationFrame(smoothScrollToTop);
+    });
 
+    // Music player functionality
+    var isPlaying = false;
+    var audio = document.getElementById('background-music');
+    var musicIcon = document.getElementById('music-icon');
 
+    musicIcon.addEventListener('click', function () {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.play().catch(error => {
+          console.log('Error playing audio:', error);
+        });
+        isPlaying = true;
+      }
+    });
+
+    // Google Translate functionality
+    function activateGoogleTranslate() {
+      if (!window.google || !google.translate) {
+        const script = document.createElement('script');
+        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        document.body.appendChild(script);
+        
+        const btn = document.querySelector('.floating-translate-btn');
+        btn.innerHTML = '<div class="translate-loading">Loading...</div>';
+        btn.style.background = '#234271';
+      } else {
+        googleTranslateElementInit();
+      }
+    }
+
+    function googleTranslateElementInit() {
+      const btn = document.querySelector('.floating-translate-btn');
+      btn.innerHTML = '<img src="public/translate-icon.png" alt="Translate"><span>Translate</span>';
+      
+      if (!document.querySelector('.goog-te-menu-frame')) {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'af,am,ar,bn,zh-CN,zh-TW,fr,de,gu,hi,id,it,ja,kn,ko,ml,mr,ne,nl,pa,pt,ro,ru,si,es,sv,sw,ta,te,th,tr,uk,ur,vi',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+      
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        btn.style.background = '#34a853';
+        select.click();
+        
+        select.addEventListener('blur', function() {
+          btn.style.background = '#4285f4';
+        });
+      }
+    }
+
+    // Chatbot configuration
+    window.embeddedChatbotConfig = {
+      chatbotId: "iHUFXP4dziHwbqdmgIfl3",
+      domain: "www.chatbase.co"
+    }
+  </script>
+  <script src="https://www.chatbase.co/embed.min.js" chatbotId="iHUFXP4dziHwbqdmgIfl3" domain="www.chatbase.co" defer></script>
 </body>
 </html>

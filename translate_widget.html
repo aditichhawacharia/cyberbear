@@ -1,0 +1,79 @@
+<!-- components/translate-widget.html -->
+<style>
+  /* Floating Translate Button Styles */
+  .floating-translate-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #4285f4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 999;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .floating-translate-btn:hover {
+    background: #3367d6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  }
+  .hidden-translate { display: none; }
+  .goog-te-banner-frame { display: none !important; }
+  .goog-te-gadget { color: transparent !important; }
+  .goog-te-menu-frame {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px !important;
+    max-width: 300px !important;
+  }
+  @media (max-width: 600px) {
+    .floating-translate-btn { bottom: 70px; padding: 8px 12px; font-size: 12px; }
+  }
+</style>
+
+<div class="floating-translate-btn" onclick="activateGoogleTranslate()">
+  <img src="/public/translate-icon.png" alt="Translate">
+  <span>Translate</span>
+</div>
+
+<div id="google_translate_element" class="hidden-translate"></div>
+
+<script>
+  function activateGoogleTranslate() {
+    if (!window.google || !google.translate) {
+      const script = document.createElement('script');
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(script);
+      const btn = document.querySelector('.floating-translate-btn');
+      btn.innerHTML = 'Loading...';
+      btn.style.background = '#234271';
+    } else {
+      googleTranslateElementInit();
+    }
+  }
+
+  function googleTranslateElementInit() {
+    const btn = document.querySelector('.floating-translate-btn');
+    btn.innerHTML = '<img src="/public/translate-icon.png" alt="Translate"><span>Translate</span>';
+    if (!document.querySelector('.goog-te-menu-frame')) {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'hi,te,zh-CN,ta',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+    const select = document.querySelector('.goog-te-combo');
+    if (select) {
+      btn.style.background = '#34a853';
+      select.click();
+      select.addEventListener('blur', () => btn.style.background = '#4285f4');
+    }
+  }
+</script>

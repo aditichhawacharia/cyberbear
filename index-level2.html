@@ -60,5 +60,14 @@
       domain="www.chatbase.co"
       defer>
     </script>
+    <!-- Add this before </body> -->
+<div id="translate-container"></div>
+<script>
+  fetch('translate-widget.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('translate-container').innerHTML = html;
+    });
+</script>
   </body>
 </html>
