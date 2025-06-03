@@ -98,36 +98,35 @@
     let availableQuestions = [];
     let retries = 0;
     let retryScore = 200;
-    let questions = [
+   let questions = [
   {
     question: "A viral post claims that charging your phone in the microwave will make it charge instantly. What should you do?",
-    choice1: "Try it yourself to see if it works.",
-    choice2: "Share the post so others can try it too.",
-    choice3: "Ignore it and look it up on a trusted tech site first.",
+    choice1: "Ignore it and look it up on a trusted tech site first.",
+    choice2: "Try it yourself to see if it works.",
+    choice3: "Share the post so others can try it too.",
     choice4: "Ask your friends if they've done it.",
-    answer: 3,
+    answer: 1,
     explanation: "This is a dangerous hoax. Always fact-check bizarre claims using trusted sources before acting on them."
   },
   {
     question: "You see a post saying your favorite celebrity passed away, but no major news sources are reporting it. What should you do?",
     choice1: "Believe it right away and tell everyone.",
     choice2: "Make a tribute post immediately.",
-    choice3: "Double-check reliable news sources before believing it.",
-    choice4: "Comment asking others if it’s true.",
-    answer: 3,
+    choice3: "Comment asking others if it's true.",
+    choice4: "Double-check reliable news sources before believing it.",
+    answer: 4,
     explanation: "Some posts are clickbait or fake. Always verify news with trusted sources before sharing or reacting."
   },
   {
-    question: "A chain message says if you don't forward it to 10 people, your account will be deleted. What’s the smartest thing to do?",
+    question: "A chain message says if you don't forward it to 10 people, your account will be deleted. What's the smartest thing to do?",
     choice1: "Forward it just in case.",
-    choice2: "Delete it — it’s clearly fake.",
+    choice2: "Delete it — it's clearly fake.",
     choice3: "Ask a friend what to do.",
     choice4: "Post about it on your story to warn others.",
     answer: 2,
     explanation: "Chain messages are usually hoaxes designed to scare people. Never forward them — just delete and ignore."
   }
 ];
-
 
     const SCORE_POINTS = 200;
     const MAX_QUESTIONS = questions.length;
