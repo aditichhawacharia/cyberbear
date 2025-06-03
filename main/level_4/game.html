@@ -357,6 +357,11 @@
                 message: "Hey Sam! I saw your viral video! I want to send you a cool gift. What's your home address? 🎁",
                 choices: [
                     {
+                        text: "🏠 Share your real home address",
+                        type: "dangerous",
+                        result: "Oh no! Never share your real address with strangers! This could put you and your family in danger. Always block suspicious people instead. 🚨"
+                    },
+                    {
                         text: "🚫 Block and report this person",
                         type: "safe",
                         result: "Great choice! Never share personal information with strangers online. You blocked the suspicious account and stayed safe! 🛡️"
@@ -365,11 +370,6 @@
                         text: "📧 Give them a fake address",
                         type: "risky", 
                         result: "Not the best choice. Even fake information can lead to more problems. It's better to just block suspicious people. ⚠️"
-                    },
-                    {
-                        text: "🏠 Share your real home address",
-                        type: "dangerous",
-                        result: "Oh no! Never share your real address with strangers! This could put you and your family in danger. Always block suspicious people instead. 🚨"
                     }
                 ]
             },
@@ -382,11 +382,6 @@
                 message: "Hi Sam! It's Emma from your math class. I saw your awesome video! Want to be friends on here?",
                 choices: [
                     {
-                        text: "✅ Accept - I know Emma from school",
-                        type: "safe",
-                        result: "Perfect! It's safe to connect with people you know in real life like classmates. Great social media habit! 🌟"
-                    },
-                    {
                         text: "🤔 Ask her to prove it's really her first",
                         type: "risky",
                         result: "Good thinking, but since you recognize her from class, it's okay to accept. Being cautious is good, but don't overthink real friends! 💭"
@@ -395,6 +390,11 @@
                         text: "❌ Decline because you don't add anyone",
                         type: "risky",
                         result: "While being careful is good, it's totally fine to connect with real friends you know from school or family. Social media can be fun with people you trust! 😊"
+                    },
+                    {
+                        text: "✅ Accept - I know Emma from school",
+                        type: "safe",
+                        result: "Perfect! It's safe to connect with people you know in real life like classmates. Great social media habit! 🌟"
                     }
                 ]
             },
@@ -407,14 +407,14 @@
                 message: "Your video is stupid and you're ugly! Nobody likes you! Delete your account loser! 😡💀",
                 choices: [
                     {
-                        text: "🚨 Report the comment and block the user",
-                        type: "safe",
-                        result: "Perfect! Reporting cyberbullies helps keep social media safe for everyone. You handled this like a pro! 🌟"
-                    },
-                    {
                         text: "😢 Reply with mean comments back",
                         type: "risky",
                         result: "Fighting back with mean comments usually makes things worse. It's better to report and block bullies instead of engaging. 🤔"
+                    },
+                    {
+                        text: "🚨 Report the comment and block the user",
+                        type: "safe",
+                        result: "Perfect! Reporting cyberbullies helps keep social media safe for everyone. You handled this like a pro! 🌟"
                     },
                     {
                         text: "😭 Delete your account",
@@ -432,6 +432,11 @@
                 message: "Sam just got an A+ on his science project! He wants to celebrate. What's the best way to share this?",
                 choices: [
                     {
+                        text: "🤫 Don't post anything - keep it private",
+                        type: "risky",
+                        result: "It's totally fine to share good news and achievements! Social media is great for celebrating wins with friends and family. Don't be afraid to share positive moments! 😊"
+                    },
+                    {
                         text: "🎉 'So happy! Got an A+ on my science project!'",
                         type: "safe",
                         result: "Awesome! Sharing your achievements and positive moments is what social media is great for. You're spreading good vibes! 🌟"
@@ -440,11 +445,6 @@
                         text: "📚 'A+ on my project about volcanoes at Lincoln Elementary in room 205!'",
                         type: "risky",
                         result: "Great news to share, but maybe don't include your specific school and classroom details. Keep personal info more general for safety! ⚠️"
-                    },
-                    {
-                        text: "🤫 Don't post anything - keep it private",
-                        type: "risky",
-                        result: "It's totally fine to share good news and achievements! Social media is great for celebrating wins with friends and family. Don't be afraid to share positive moments! 😊"
                     }
                 ]
             },
@@ -457,9 +457,9 @@
                 message: "Hi Sam! I'm 25 and think you're really cool. Want to be friends? I can teach you lots of things and we can meet up sometime! 😉",
                 choices: [
                     {
-                        text: "❌ Decline and tell a trusted adult",
-                        type: "safe",
-                        result: "Excellent! Adults trying to befriend kids online is a red flag. You made the right choice by declining and telling a trusted adult! 🛡️"
+                        text: "🏃 Accept and agree to meet up",
+                        type: "dangerous",
+                        result: "Very dangerous! Never meet strangers from the internet, especially adults. This could be extremely unsafe. Always tell a trusted adult about requests like this! 🚨"
                     },
                     {
                         text: "🤝 Accept but don't meet in person",
@@ -467,9 +467,9 @@
                         result: "Still risky! Adults who specifically seek out kids online often have bad intentions. It's safer to only be friends with people you know in real life. ⚠️"
                     },
                     {
-                        text: "🏃 Accept and agree to meet up",
-                        type: "dangerous",
-                        result: "Very dangerous! Never meet strangers from the internet, especially adults. This could be extremely unsafe. Always tell a trusted adult about requests like this! 🚨"
+                        text: "❌ Decline and tell a trusted adult",
+                        type: "safe",
+                        result: "Excellent! Adults trying to befriend kids online is a red flag. You made the right choice by declining and telling a trusted adult! 🛡️"
                     }
                 ]
             },
@@ -482,6 +482,11 @@
                 message: "Sam had an amazing day at the beach with his family! What's the best way to share this memory?",
                 choices: [
                     {
+                        text: "📷 Share photos but blur faces of other families",
+                        type: "safe",
+                        result: "Thoughtful choice! It's great to respect other families' privacy while sharing your own memories. You're being considerate and safe! 🌟"
+                    },
+                    {
                         text: "🏖️ 'Amazing beach day with the family! Had so much fun!'",
                         type: "safe",
                         result: "Perfect! You shared your happy moment without giving away specific location or personal details. This is how social media should be used! 🌟"
@@ -490,11 +495,6 @@
                         text: "📍 'At Sunset Beach, 123 Coastal Drive, still here until 5pm!'",
                         type: "dangerous", 
                         result: "Too much information! Sharing your exact location and when you'll be there can be dangerous. Keep location details general or wait until after you've left! 🚨"
-                    },
-                    {
-                        text: "📷 Share photos but blur faces of other families",
-                        type: "safe",
-                        result: "Thoughtful choice! It's great to respect other families' privacy while sharing your own memories. You're being considerate and safe! 🌟"
                     }
                 ]
             },
@@ -507,6 +507,11 @@
                 message: "Your photos are cool! Can you send me a selfie? Maybe one without your shirt? It's for my photography project 📸",
                 choices: [
                     {
+                        text: "📷 Send the photo they requested",
+                        type: "dangerous",
+                        result: "Never send inappropriate photos to anyone online! These images can be misused and shared. Always block people who make these requests and tell a trusted adult! 🚨"
+                    },
+                    {
                         text: "🚫 Block immediately and tell an adult",
                         type: "safe",
                         result: "Perfect response! Anyone asking for inappropriate photos is dangerous. You protected yourself and did the right thing by telling an adult! 🛡️"
@@ -515,11 +520,6 @@
                         text: "🤔 Ask why they need the photo first",
                         type: "risky",
                         result: "Don't engage! When someone asks for inappropriate photos, there's never a good reason. Block them right away instead of asking questions. ⚠️"
-                    },
-                    {
-                        text: "📷 Send the photo they requested",
-                        type: "dangerous",
-                        result: "Never send inappropriate photos to anyone online! These images can be misused and shared. Always block people who make these requests and tell a trusted adult! 🚨"
                     }
                 ]
             },
@@ -532,6 +532,11 @@
                 message: "Dude your video is hilarious! You're gonna be famous! 😂🔥",
                 choices: [
                     {
+                        text: "🤐 Ignore the nice comment",
+                        type: "risky",
+                        result: "It's totally fine to respond to genuine friends! Don't be afraid to engage positively with people you know and trust. Social media is about connecting! 😊"
+                    },
+                    {
                         text: "😊 'Thanks Jake! You're the best!'",
                         type: "safe",
                         result: "Awesome! It feels great to get support from real friends. Positive interactions like this make social media fun and meaningful! 🌟"
@@ -540,11 +545,6 @@
                         text: "📱 Share Jake's personal phone number in reply",
                         type: "dangerous",
                         result: "Never share anyone's personal information, even friends! Keep private details like phone numbers, addresses, and personal info out of public posts. 🚨"
-                    },
-                    {
-                        text: "🤐 Ignore the nice comment",
-                        type: "risky",
-                        result: "It's totally fine to respond to genuine friends! Don't be afraid to engage positively with people you know and trust. Social media is about connecting! 😊"
                     }
                 ]
             }
