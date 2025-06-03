@@ -69,6 +69,15 @@
             color: var(--color-primary);
         }
         
+        .instructions ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
         .score-container {
             border-radius: 8px;
             padding: 1rem;
@@ -233,6 +242,12 @@
             transform: translateY(-2px);
         }
         
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .feedback {
             padding: 1rem;
             margin-top: 1rem;
@@ -257,6 +272,18 @@
             margin-top: 0.75rem;
             font-weight: normal;
             font-style: italic;
+        }
+        
+        .next-email-prompt {
+            background-color: rgba(52, 104, 192, 0.1);
+            border: 1px solid var(--color-primary);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            color: var(--color-primary);
+            font-weight: 500;
+            display: none;
         }
         
         .result-message {
@@ -341,6 +368,13 @@
             <h2>📧 Simulated Inbox Challenge</h2>
             <p>Check your inbox and decide if these emails are <strong>Legitimate ✅</strong> or <strong>Phishing ❌</strong>.</p>
             <p>Can you spot the warning signs of a phishing attempt?</p>
+            <p><strong>How to use:</strong></p>
+            <ul>
+                <li>Click on each email in the inbox below to read it</li>
+                <li>After reading, choose "Legitimate" or "Phishing"</li>
+                <li>View the explanation, then select the next email to continue</li>
+                <li>Complete all 4 emails to see your final score</li>
+            </ul>
         </div>
         
         <div class="score-container">
@@ -483,6 +517,9 @@
             // Get email data
             const email = emails.find(e => e.id === emailId);
             
+            // Check if this email was already answered
+            const isAnswered = currentItem.classList.contains('read');
+            
             // Update email viewer
             const emailViewer = document.getElementById('email-viewer');
             emailViewer.innerHTML = `
@@ -498,19 +535,49 @@
                     ${email.content}
                 </div>
                 <div class="email-actions">
-                    <button class="btn btn-legitimate" onclick="checkAnswer(${email.id}, false)">Legitimate ✅</button>
-                    <button class="btn btn-phishing" onclick="checkAnswer(${email.id}, true)">Phishing ❌</button>
+                    <button class="btn btn-legitimate" onclick="checkAnswer(${email.id}, false)" ${isAnswered ? 'disabled' : ''}>Legitimate ✅</button>
+                    <button class="btn btn-phishing" onclick="checkAnswer(${email.id}, true)" ${isAnswered ? 'disabled' : ''}>Phishing ❌</button>
                 </div>
                 <div class="feedback" id="feedback-${email.id}"></div>
+                <div class="next-email-prompt" id="next-prompt-${email.id}">
+                    ${answeredEmails < emails.length - 1 ? 
+                        '👆 Click on another email above to continue reviewing your inbox' : 
+                        'All emails reviewed! Check your final score below.'
+                    }
+                </div>
             `;
             
             emailViewer.classList.add('active');
             
-            // Check if this email was already answered
-            if (currentItem.classList.contains('read')) {
-                const feedbackElement = document.getElementById(`feedback-${email.id}`);
-                if (feedbackElement) {
-                    feedbackElement.style.display = 'block';
+            // Show feedback if already answered
+            if (isAnswered) {
+                showFeedbackForEmail(email.id);
+            }
+        }
+        
+        // Show feedback for an already answered email
+        function showFeedbackForEmail(emailId) {
+            const email = emails.find(e => e.id === emailId);
+            const feedbackElement = document.getElementById(`feedback-${emailId}`);
+            const nextPromptElement = document.getElementById(`next-prompt-${emailId}`);
+            
+            if (feedbackElement) {
+                // Determine if the answer was correct by checking stored answer
+                const emailItem = document.querySelector(`.email-item[data-id="${emailId}"]`);
+                const wasCorrect = emailItem.dataset.correct === 'true';
+                
+                if (wasCorrect) {
+                    feedbackElement.className = 'feedback correct';
+                    feedbackElement.innerHTML = `✅ Correct! ${email.isPhishing ? 'This is indeed a phishing email.' : 'This is a legitimate email.'} <div class="explanation">${email.explanation}</div>`;
+                } else {
+                    feedbackElement.className = 'feedback incorrect';
+                    feedbackElement.innerHTML = `❌ Oops! ${email.isPhishing ? 'This is actually a phishing email.' : 'This is actually a legitimate email.'} <div class="explanation">${email.explanation}</div>`;
+                }
+                
+                feedbackElement.style.display = 'block';
+                
+                if (nextPromptElement) {
+                    nextPromptElement.style.display = 'block';
                 }
             }
         }
@@ -520,6 +587,7 @@
             const email = emails.find(e => e.id === emailId);
             const emailItem = document.querySelector(`.email-item[data-id="${emailId}"]`);
             const feedbackElement = document.getElementById(`feedback-${emailId}`);
+            const nextPromptElement = document.getElementById(`next-prompt-${emailId}`);
             
             // Prevent answering twice
             if (emailItem.classList.contains('read')) {
@@ -532,6 +600,8 @@
             emailItem.classList.add('read');
             
             const isCorrect = userThinkItsPhishing === email.isPhishing;
+            emailItem.dataset.correct = isCorrect.toString();
+            
             if (isCorrect) {
                 currentScore++;
                 document.getElementById('score').textContent = currentScore;
@@ -544,9 +614,20 @@
             
             feedbackElement.style.display = 'block';
             
-            // Check if all emails are answered
-            if (answeredEmails === emails.length) {
-                showFinalResults();
+            // Disable buttons
+            const buttons = document.querySelectorAll('.email-actions .btn');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            // Show next email prompt or final message
+            if (answeredEmails < emails.length) {
+                nextPromptElement.innerHTML = '👆 Click on another email above to continue reviewing your inbox';
+                nextPromptElement.style.display = 'block';
+            } else {
+                nextPromptElement.innerHTML = 'All emails reviewed! Check your final score below.';
+                nextPromptElement.style.display = 'block';
+                setTimeout(() => {
+                    showFinalResults();
+                }, 2000);
             }
         }
         
