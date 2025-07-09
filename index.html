@@ -79,11 +79,118 @@
       max-width: 300px !important;
     }
 
+    /* Certificate Section Styles */
+    .certificate-section {
+      margin: 40px auto;
+      padding: 40px 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .certificate-content {
+      text-align: center;
+    }
+
+    .certificate-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .certificate-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: #fff;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      margin-bottom: 15px;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .certificate-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      color: #ddd;
+      font-size: clamp(1rem, 3vw, 1.1rem);
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+
+    .certificate-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(10px, 3vw, 20px);
+      margin: 30px 0;
+    }
+
+    .certificate-feature {
+      border-radius: 10px;
+      padding: clamp(10px, 3vw, 15px);
+      width: 100%;
+      max-width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      min-width: 200px;
+      flex: 1;
+    }
+
+    .certificate-feature-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .certificate-feature h4 {
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .certificate-feature p {
+      color: #ddd;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.8rem, 2vw, 0.95rem);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .certificate-form-btn {
+      background: #234271;
+      color: white;
+      border: none;
+      padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 25px);
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .certificate-form-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
     @media (max-width: 600px) {
-      .floating-translate-btn {
-        bottom: 70px;
-        padding: 8px 12px;
-        font-size: 12px;
+      .certificate-section {
+        margin: 20px auto;
+        padding: 30px 15px;
+      }
+      
+      .certificate-features {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .certificate-feature {
+        max-width: 100%;
       }
     }
   </style>
@@ -229,7 +336,7 @@
             <div class="cyberfit-cyber-container2">
               <h3> Truth or Trap? ⭐⭐⭐⭐⭐ </h3>
               <p class="cyberfit-cyber2">
-  Sharpen your critical thinking skills and learn how to spot misleading information online. Don’t fall for the trap—investigate before you believe!
+  Sharpen your critical thinking skills and learn how to spot misleading information online. Don't fall for the trap—investigate before you believe!
               </p>
             </div>
           </div>
@@ -249,6 +356,42 @@
           </div>
         </div>
       </section>
+
+      <!-- Certificate Section -->
+      <div style="margin: 40px auto; padding: 40px 20px; text-align: center; width: 90%; max-width: 800px;">
+        <span style="font-size: 60px; margin-bottom: 20px; display: block;">🏆</span>
+        <h1 style="font-family: 'Poppins', sans-serif; font-weight: 800; color: #fff; margin-bottom: 15px; font-size: clamp(1.5rem, 5vw, 2.2rem); text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">Get Your Child's Intro to Cybersecurity Certificate Today!</h1>
+        <p style="font-family: 'Poppins', sans-serif; font-weight: 500; color: #ddd; font-size: clamp(1rem, 3vw, 1.1rem); margin-bottom: 25px; line-height: 1.4;">
+          Complete all 5 levels and earn an official certificate signed by our 501(c)(3) nonprofit and founder. 
+          This certificate shows that your child understands key online safety skills like avoiding scams and spotting harmful content. It's great for future tech clubs and school!
+        </p>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(10px, 3vw, 20px); margin: 30px 0;">
+          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); min-width: 200px; flex: 1;">
+            <span style="font-size: 24px; margin-bottom: 10px; display: block;">📜</span>
+            <h4 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 600; margin-bottom: 8px;">Official Certificate</h4>
+            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500; line-height: 1.3;">Signed by our 501(c)(3) nonprofit organization and founder</p>
+          </div>
+          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); min-width: 200px; flex: 1;">
+            <span style="font-size: 24px; margin-bottom: 10px; display: block;">🎓</span>
+            <h4 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 600; margin-bottom: 8px;">Educational Achievement</h4>
+            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500; line-height: 1.3;">Recognized completion of introduction to cybersecurity training</p>
+          </div>
+          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); min-width: 200px; flex: 1;">
+            <span style="font-size: 24px; margin-bottom: 10px; display: block;">🌟</span>
+            <h4 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 600; margin-bottom: 8px;">Personal Recognition</h4>
+            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500; line-height: 1.3;">Customized with your child's name and completion date</p>
+          </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+          <a href="https://forms.gle/JshMGsybfbHrGmCF6" target="_blank">
+            <button style="background: #234271; color: white; border: none; padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 25px); border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 500; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: clamp(0.8rem, 2vw, 1rem); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.3)';">
+              Claim Your Certificate Now
+            </button>
+          </a>
+        </div>
+      </div>
 
       <div style="margin: 20px auto; padding: 25px; text-align: center; width: 90%">
         <h1 style="font-family: 'Poppins', sans-serif; font-weight: 800; color: #fff; margin-bottom: 20px; font-size: clamp(1.5rem, 5vw, 2.5rem); text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">More Levels Coming Soon!</h1>
