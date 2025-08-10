@@ -4,56 +4,129 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="./css/global.css" />
-  <link rel="stylesheet" href="./css/index.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="873b2a6e-8d24-4ef6-ac32-7a22c1691f69"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMJMSDJVFT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-PMJMSDJVFT');
-
-    let isOriginalColor = true;
-    function changebackgroundcolor() {
-      const container = document.querySelector('.music-icon');
-      if (isOriginalColor) {
-        container.style.background = 'linear-gradient(90deg, rgb(119,234,253) ,rgb(119,203,253))'; //new gradient
-      } else {
-        container.style.background = 'linear-gradient(90deg, rgb(84, 84, 84) ,  rgb(84, 84, 84))'; //prevoius gradient
-      }
-      isOriginalColor = !isOriginalColor;
-    }
   </script>
   <style>
-    /* Floating Translate Button Styles */
+    :root {
+      --primary-blue: #234271;
+      --secondary-blue: #4285f4;
+      --dark-bg: #131313;
+      --white: #ffffff;
+      --light-gray: #ddd;
+      --shadow: 0 4px 12px rgba(0,0,0,0.2);
+      --hover-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(252.82deg, var(--primary-blue) 11.79%, var(--dark-bg) 49.38%);
+      min-height: 100vh;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(35, 66, 113, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .nav-btn img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .music-btn {
+      background: linear-gradient(90deg, rgb(84, 84, 84), rgb(84, 84, 84));
+    }
+
+    .music-btn:hover {
+      opacity: 0.8;
+    }
+
+    /* Floating Translate Button */
     .floating-translate-btn {
       position: fixed;
       right: 20px;
-      bottom: 80px; /* Positioned above the chat button */
+      bottom: 80px;
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #4285f4;
+      background: var(--secondary-blue);
       color: white;
       padding: 10px 15px;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow);
       z-index: 999;
-      font-family: 'Poppins', sans-serif;
       font-size: 14px;
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
 
     .floating-translate-btn:hover {
       background: #3367d6;
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      box-shadow: var(--hover-shadow);
     }
 
     .floating-translate-btn img {
@@ -61,10 +134,366 @@
       height: 20px;
     }
 
-    .hidden-translate {
-      display: none;
+    /* Main Content */
+    .main-content {
+      padding-top: 80px;
+      min-height: 100vh;
     }
 
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Section */
+    .header-section {
+      text-align: center;
+      padding: 40px 0 60px;
+    }
+
+    .main-title {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 4px rgba(255, 255, 255, 0.25);
+      background: linear-gradient(45deg, #fff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Level Cards */
+    .levels-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .level-card {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .level-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--hover-shadow);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .level-card.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .level-visual {
+      flex: 0 0 300px;
+      position: relative;
+    }
+
+    .level-gif {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .level-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .level-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .level-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--light-gray);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .play-btn img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .level-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--white);
+    }
+
+    .level-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--light-gray);
+      font-weight: 400;
+    }
+
+    /* Certificate Section */
+    .certificate-section {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin: 60px 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .certificate-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .certificate-title {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .certificate-subtitle {
+      font-size: clamp(1rem, 3vw, 1.1rem);
+      font-weight: 500;
+      color: var(--light-gray);
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .certificate-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .certificate-feature {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .certificate-feature:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .certificate-feature-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .certificate-feature h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .certificate-feature p {
+      font-size: 0.95rem;
+      color: var(--light-gray);
+      line-height: 1.4;
+    }
+
+    .certificate-btn {
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .certificate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--hover-shadow);
+      background: #1a2f5a;
+    }
+
+    /* Coming Soon Section */
+    .coming-soon {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin: 40px 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .coming-soon h2 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .upcoming-levels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .upcoming-level {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .upcoming-level:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .upcoming-level h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .upcoming-level p {
+      color: var(--light-gray);
+      line-height: 1.4;
+    }
+
+    /* Footer */
+    .footer {
+      background: #000;
+      padding: 40px 20px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer .social-links {
+      margin-bottom: 20px;
+    }
+
+    .footer .social-links a {
+      display: inline-block;
+      margin: 0 15px;
+      color: gray;
+      font-size: 2rem;
+      transition: var(--transition);
+    }
+
+    .footer .social-links a:hover {
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .footer .footer-nav {
+      margin-bottom: 20px;
+    }
+
+    .footer .footer-nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .footer .footer-nav a {
+      color: gray;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer .footer-nav a:hover {
+      color: var(--white);
+    }
+
+    .footer .copyright {
+      color: gray;
+      font-size: 0.9rem;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-blue);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+    }
+
+    .scroll-top.show-btn {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .scroll-top img {
+      width: 24px;
+      height: 24px;
+      filter: invert(1);
+    }
+
+    /* Google Translate Styles */
     .goog-te-banner-frame {
       display: none !important;
     }
@@ -74,124 +503,156 @@
     }
 
     .goog-te-menu-frame {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow);
       border-radius: 8px !important;
       max-width: 300px !important;
     }
 
-    /* Certificate Section Styles */
-    .certificate-section {
-      margin: 40px auto;
-      padding: 40px 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 800px;
-    }
-
-    .certificate-content {
-      text-align: center;
-    }
-
-    .certificate-icon {
-      font-size: 60px;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    .certificate-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      color: #fff;
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
-      margin-bottom: 15px;
-      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    }
-
-    .certificate-subtitle {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-      color: #ddd;
-      font-size: clamp(1rem, 3vw, 1.1rem);
-      margin-bottom: 25px;
-      line-height: 1.4;
-    }
-
-    .certificate-features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: clamp(10px, 3vw, 20px);
-      margin: 30px 0;
-    }
-
-    .certificate-feature {
-      border-radius: 10px;
-      padding: clamp(10px, 3vw, 15px);
-      width: 100%;
-      max-width: 250px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      min-width: 200px;
-      flex: 1;
-    }
-
-    .certificate-feature-icon {
-      font-size: 24px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .certificate-feature h4 {
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .certificate-feature p {
-      color: #ddd;
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(0.8rem, 2vw, 0.95rem);
-      font-weight: 500;
-      line-height: 1.3;
-    }
-
-    .certificate-form-btn {
-      background: #234271;
-      color: white;
-      border: none;
-      padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 25px);
-      border-radius: 30px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-    }
-
-    .certificate-form-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    }
-
-    @media (max-width: 600px) {
-      .certificate-section {
-        margin: 20px auto;
-        padding: 30px 15px;
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 10px 15px;
       }
-      
-      .certificate-features {
+
+      .nav-left,
+      .nav-right {
+        gap: 10px;
+      }
+
+      .nav-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .nav-btn img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .main-content {
+        padding-top: 70px;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+
+      .header-section {
+        padding: 20px 0 40px;
+      }
+
+      .levels-container {
+        gap: 30px;
+      }
+
+      .level-card {
+        flex-direction: column !important;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .level-visual {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .level-header {
         flex-direction: column;
-        align-items: center;
+        gap: 15px;
+        text-align: center;
       }
-      
-      .certificate-feature {
-        max-width: 100%;
+
+      .level-number {
+        font-size: 1.5rem;
+        padding: 8px 16px;
       }
+
+      .level-title {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .level-description {
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .certificate-section,
+      .coming-soon {
+        padding: 20px;
+      }
+
+      .certificate-features,
+      .upcoming-levels {
+        grid-template-columns: 1fr;
+      }
+
+      .footer .footer-nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .floating-translate-btn {
+        right: 15px;
+        bottom: 70px;
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .scroll-top {
+        right: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-nav {
+        padding: 8px 10px;
+      }
+
+      .nav-btn {
+        width: 35px;
+        height: 35px;
+      }
+
+      .nav-btn img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .level-card {
+        padding: 15px;
+      }
+
+      .level-gif {
+        height: 150px;
+      }
+
+      .play-btn {
+        width: 50px;
+        height: 50px;
+      }
+
+      .play-btn img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    /* Animation for music icon */
+    @keyframes moveIcon {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(10px, 10px); }
+      50% { transform: translate(0, 20px); }
+      75% { transform: translate(-10px, 10px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .music-btn.animate {
+      animation: moveIcon 2s ease-in-out;
     }
   </style>
 </head>
@@ -201,273 +662,228 @@
     <source src="./audio/back.mp3" type="audio/mpeg">
   </audio>
 
-  <a href="main/level_2/game/wackthehacker.html">
-    <img src="public/reward.png" title="game!" alt="Game Icon" class="reward-icon" id="reward-icon">
-  </a>
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="https://create.kahoot.it/share/beginner-cybersecurity-terms/a13ab7e5-c88c-4319-a977-02916d7c9406" target="_blank" class="nav-btn" title="Kahoot Quiz">
+        <img src="public/multiplayer.png" alt="Kahoot">
+      </a>
+      <a href="cyberfit.html" class="nav-btn" title="Learn More">
+        <img src="public/kids.png" alt="Learn">
+      </a>
+      <a href="main/level_2/game/wackthehacker.html" class="nav-btn" title="Game">
+        <img src="public/reward.png" alt="Game">
+      </a>
+      <a href="vids/vid.html" class="nav-btn" title="Video Guides">
+        <img src="public/video.png" alt="Videos">
+      </a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn music-btn" id="music-btn" title="Toggle Music">
+        <img src="public/music.png" alt="Music">
+      </button>
+    </div>
+  </nav>
 
-  <a href="vids/vid.html">
-    <img src="public/video.png" title="video guides" alt="Video Icon" class="video-icon" id="video-icon">
-  </a>
-
-  <a target="_blank" href="https://create.kahoot.it/share/beginner-cybersecurity-terms/a13ab7e5-c88c-4319-a977-02916d7c9406">
-    <img src="public/multiplayer.png" title="kahoot" alt="Multiplayer Icon" class="multiplayer-icon" id="multiplayer-icon">
-  </a>
-
-  <a href="cyberfit.html">
-    <img src="public/kids.png" title="learn!" alt="Kids Icon" class="kids-icon" id="kids-icon">
-  </a>
-
-  <img src="public/music.png" title="music" alt="Music Icon" class="music-icon" id="music-icon" onclick="changebackgroundcolor()">
-
-  <div class="homepage">
-  <section class="homepage-inner">
-        <div class="frame-parent">
-          <div class="cyber-fit-wrapper">
-            <h1 class="cyber-fit">CyberBear</h1>
-          </div>
-          <div class="frame-group">
-            <div class="cyberfit-cyber-challenges-to-wrapper">
-              <div class="cyberfit-cyber-container">
-                <h3> Phishing Attack ⭐ </h3>
-                <p class="cyberfit-cyber">
-                  Learn how to spot sneaky emails and keep your personal info safe from scammers. Are you ready for the
-                  cyber challenge?
-                </p>
-              </div>
-            </div>
-            <div class="frame-wrapper">
-              <div class="level-1-parent">
-                <h3 class="level-1">LEVEL- 1</h3>
-
-                <div class="animation-1716828621477-1-wrapper">
-                  <a href="index_levels/index-level1.html">
-                    <img class="animation-1716828621477-1" loading="lazy" alt="play" title="play level 1"
-                      src="./public/animation--1716828621477-1@2x.gif" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <img class="giphy-1-1" loading="lazy" alt="" src="./public/giphy-1-1@2x.gif" />
-          </div>
-        </div>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Header Section -->
+      <section class="header-section">
+        <h1 class="main-title">CyberBear</h1>
+        <h2> Gamified Edtech Platform Teaching Youth Social Media & Online Safety </h2>
+        <p> Start Your CyberBear Journey Now! 🐻⬇️ </p>
       </section>
-      <section class="frame-container">
-        <div class="frame-div">
-          <div class="giphy-2-1-parent">
-            <img class="giphy-2-1" loading="lazy" alt="" src="./public/giphy-2-1@2x.gif" />
-            <div class="frame-wrapper1">
-              <div class="level-2-parent">
-                <h3 class="level-2">LEVEL- 2</h3>
-                <div class="animation-1716828621477-2-wrapper">
-                  <a href="index_levels/index-level2.html">
-                    <img class="animation-1716828621477-2" loading="lazy" alt="play" title="play level 2"
-                      src="./public/animation--1716828621477-1@2x.gif" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="cyberfit-cyber-challenges-to-container">
-              <div class="cyberfit-cyber-container1">
-                <h3> Malware Mayhem ⭐⭐ </h3>
-                <p class="cyberfit-cyber1">
-                  Your mission: Find and defeat the sneaky malware trying to mess up your computer... Let's go!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="frame-parent1">
-          <div class="cyberfit-cyber-challenges-to-frame">
-            <div class="cyberfit-cyber-container2">
-              <h3> Weak Password Worries ⭐⭐⭐ </h3>
-              <p class="cyberfit-cyber2">
-                Create strong passwords and use two-step security to keep hackers and force attacks out. You've got
-                this!
-              </p>
-            </div>
-          </div>
-          <div class="frame-parent2">
-            <div class="frame-wrapper2">
-              <div class="level-3-parent">
-                <h3 class="level-3">LEVEL- 3</h3>
-                <div class="animation-1716828621477-3-wrapper">
-                  <a href="index_levels/index-level3.html">
-                    <img class="animation-1716828621477-3" loading="lazy" alt="play" title="play level 3"
-                      src="./public/animation--1716828621477-1@2x.gif" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <img class="giphy-3-1" loading="lazy" alt="" src="./public/giphy-3-1@2x.gif" />
-          </div>
-        </div>
-      </section>
-              
-      <section class="homepage-child">
-        <div class="frame-parent3">
-          <div class="giphy-4-1-wrapper">
-            <img class="giphy-4-1" loading="lazy" alt="" src="./public/giphy-4-1@2x.gif" />
-          </div>
-          <div class="frame-wrapper3">
-            <div class="level-4-parent">
-              <h3 class="level-3">LEVEL- 4</h3>
 
-              <div class="animation-1716828621477-4-wrapper">
-                <a href="index_levels/index-level4.html">
-                  <img class="animation-1716828621477-4" loading="lazy" alt="play" title="play level 4"
-                    src="./public/animation--1716828621477-1@2x.gif" />
-                </a>
-              </div>
-            </div>
+      <!-- Levels Container -->
+      <div class="levels-container">
+        <!-- Level 1 -->
+        <article class="level-card">
+          <div class="level-visual">
+            <img class="level-gif" src="./public/giphy-1-1@2x.gif" alt="Level 1 Animation">
           </div>
-          <div class="cyberfit-cyber-container3">
-            <h3> The Viral Challenge Trap ⭐⭐⭐⭐</h3>
-            <p class="cyberfit-cyber3">
+          <div class="level-content">
+            <div class="level-header">
+              <span class="level-number">LEVEL 1</span>
+              <a href="index_levels/index-level1.html" class="play-btn" title="Play Level 1">
+                <img src="./public/animation--1716828621477-1@2x.gif" alt="Play">
+              </a>
+            </div>
+            <h2 class="level-title">Phishing Attack ⭐</h2>
+            <p class="level-description">
+              Learn how to spot sneaky emails and keep your personal info safe from scammers. Are you ready for the cyber challenge?
+            </p>
+          </div>
+        </article>
+
+        <!-- Level 2 -->
+        <article class="level-card reverse">
+          <div class="level-visual">
+            <img class="level-gif" src="./public/giphy-2-1@2x.gif" alt="Level 2 Animation">
+          </div>
+          <div class="level-content">
+            <div class="level-header">
+              <span class="level-number">LEVEL 2</span>
+              <a href="index_levels/index-level2.html" class="play-btn" title="Play Level 2">
+                <img src="./public/animation--1716828621477-1@2x.gif" alt="Play">
+              </a>
+            </div>
+            <h2 class="level-title">Malware Mayhem ⭐⭐</h2>
+            <p class="level-description">
+              Your mission: Find and defeat the sneaky malware trying to mess up your computer... Let's go!
+            </p>
+          </div>
+        </article>
+
+        <!-- Level 3 -->
+        <article class="level-card">
+          <div class="level-visual">
+            <img class="level-gif" src="./public/giphy-3-1@2x.gif" alt="Level 3 Animation">
+          </div>
+          <div class="level-content">
+            <div class="level-header">
+              <span class="level-number">LEVEL 3</span>
+              <a href="index_levels/index-level3.html" class="play-btn" title="Play Level 3">
+                <img src="./public/animation--1716828621477-1@2x.gif" alt="Play">
+              </a>
+            </div>
+            <h2 class="level-title">Weak Password Worries ⭐⭐⭐</h2>
+            <p class="level-description">
+              Create strong passwords and use two-step security to keep hackers and force attacks out. You've got this!
+            </p>
+          </div>
+        </article>
+
+        <!-- Level 4 -->
+        <article class="level-card reverse">
+          <div class="level-visual">
+            <img class="level-gif" src="./public/giphy-4-1@2x.gif" alt="Level 4 Animation">
+          </div>
+          <div class="level-content">
+            <div class="level-header">
+              <span class="level-number">LEVEL 4</span>
+              <a href="index_levels/index-level4.html" class="play-btn" title="Play Level 4">
+                <img src="./public/animation--1716828621477-1@2x.gif" alt="Play">
+              </a>
+            </div>
+            <h2 class="level-title">The Viral Challenge Trap ⭐⭐⭐⭐</h2>
+            <p class="level-description">
               Learn what to post, how to protect your privacy, and why not responding to risky comments or messages keeps you safe. Think before you share, stay kind, and scroll smart!
             </p>
           </div>
-        </div>
-      </section>
+        </article>
 
-      <!-- New Level 5 Section (copied from Level 3 structure) -->
-      <section class="frame-container">
-        <div class="frame-parent1">
-          <div class="cyberfit-cyber-challenges-to-frame">
-            <div class="cyberfit-cyber-container2">
-              <h3> Truth or Trap? ⭐⭐⭐⭐⭐ </h3>
-              <p class="cyberfit-cyber2">
-  Sharpen your critical thinking skills and learn how to spot misleading information online. Don't fall for the trap—investigate before you believe!
-              </p>
-            </div>
+        <!-- Level 5 -->
+        <article class="level-card">
+          <div class="level-visual">
+            <img class="level-gif" src="./public/giphy-1-1@2x.gif" alt="Level 5 Animation">
           </div>
-          <div class="frame-parent2">
-            <div class="frame-wrapper2">
-              <div class="level-3-parent">
-                <h3 class="level-3">LEVEL- 5</h3>
-                <div class="animation-1716828621477-3-wrapper">
-                  <a href="index_levels/index-level5.html">
-                    <img class="animation-1716828621477-3" loading="lazy" alt="play" title="play level 5"
-                      src="./public/animation--1716828621477-1@2x.gif" />
-                  </a>
-                </div>
-              </div>
+          <div class="level-content">
+            <div class="level-header">
+              <span class="level-number">LEVEL 5</span>
+              <a href="index_levels/index-level5.html" class="play-btn" title="Play Level 5">
+                <img src="./public/animation--1716828621477-1@2x.gif" alt="Play">
+              </a>
             </div>
-            <img class="giphy-1-1" loading="lazy" alt="" src="./public/giphy-1-1@2x.gif" />
+            <h2 class="level-title">Truth or Trap? ⭐⭐⭐⭐⭐</h2>
+            <p class="level-description">
+              Sharpen your critical thinking skills and learn how to spot misleading information online. Don't fall for the trap—investigate before you believe!
+            </p>
           </div>
-        </div>
-      </section>
+        </article>
+      </div>
 
       <!-- Certificate Section -->
-      <div style="margin: 40px auto; padding: 40px 20px; text-align: center; width: 90%; max-width: 800px;">
-        <span style="font-size: 60px; margin-bottom: 20px; display: block;">🏆</span>
-        <h1 style="font-family: 'Poppins', sans-serif; font-weight: 800; color: #fff; margin-bottom: 15px; font-size: clamp(1.5rem, 5vw, 2.2rem); text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">Get Your Child's Intro to Cybersecurity Certificate Today!</h1>
-        <p style="font-family: 'Poppins', sans-serif; font-weight: 500; color: #ddd; font-size: clamp(1rem, 3vw, 1.1rem); margin-bottom: 25px; line-height: 1.4;">
+      <section class="certificate-section">
+        <span class="certificate-icon">🏆</span>
+        <h2 class="certificate-title">Get Your Child's Intro to Cybersecurity Certificate Today!</h2>
+        <p class="certificate-subtitle">
           Complete all 5 levels and earn an official certificate signed by our 501(c)(3) nonprofit and founder. 
           This certificate shows that your child understands key online safety skills like avoiding scams and spotting harmful content. It's great for future tech clubs and school!
         </p>
         
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(10px, 3vw, 20px); margin: 30px 0;">
-          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); min-width: 200px; flex: 1;">
-            <span style="font-size: 24px; margin-bottom: 10px; display: block;">📜</span>
-            <h4 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 600; margin-bottom: 8px;">Official Certificate</h4>
-            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500; line-height: 1.3;">Signed by our 501(c)(3) nonprofit organization and founder</p>
+        <div class="certificate-features">
+          <div class="certificate-feature">
+            <span class="certificate-feature-icon">📜</span>
+            <h4>Official Certificate</h4>
+            <p>Signed by our 501(c)(3) nonprofit organization and founder</p>
           </div>
-          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); min-width: 200px; flex: 1;">
-            <span style="font-size: 24px; margin-bottom: 10px; display: block;">🎓</span>
-            <h4 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 600; margin-bottom: 8px;">Educational Achievement</h4>
-            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500; line-height: 1.3;">Recognized completion of introduction to cybersecurity training</p>
+          <div class="certificate-feature">
+            <span class="certificate-feature-icon">🎓</span>
+            <h4>Educational Achievement</h4>
+            <p>Recognized completion of introduction to cybersecurity training</p>
           </div>
-          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); min-width: 200px; flex: 1;">
-            <span style="font-size: 24px; margin-bottom: 10px; display: block;">🌟</span>
-            <h4 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 600; margin-bottom: 8px;">Personal Recognition</h4>
-            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500; line-height: 1.3;">Customized with your child's name and completion date</p>
+          <div class="certificate-feature">
+            <span class="certificate-feature-icon">🌟</span>
+            <h4>Personal Recognition</h4>
+            <p>Customized with your child's name and completion date</p>
           </div>
         </div>
         
-        <div style="margin-top: 20px;">
-          <a href="https://forms.gle/JshMGsybfbHrGmCF6" target="_blank">
-            <button style="background: #234271; color: white; border: none; padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 25px); border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 500; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: clamp(0.8rem, 2vw, 1rem); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.3)';">
-              Claim Your Certificate Now
-            </button>
-          </a>
-        </div>
-      </div>
+        <a href="https://forms.gle/JshMGsybfbHrGmCF6" target="_blank" class="certificate-btn">
+          Claim Your Certificate Now
+        </a>
+      </section>
 
-      <div style="margin: 20px auto; padding: 25px; text-align: center; width: 90%">
-        <h1 style="font-family: 'Poppins', sans-serif; font-weight: 800; color: #fff; margin-bottom: 20px; font-size: clamp(1.5rem, 5vw, 2.5rem); text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">More Levels Coming Soon!</h1>
-        
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(10px, 3vw, 20px); margin-top: 15px;">
-          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 350px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-            <h3 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem);">⭐⭐⭐⭐⭐⭐</h3>
-            <h3 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem);">Respect Your Private Info </h3>
-            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500;">Learn to guard your data like your best-kept dance move — not everyone should see it.</p>
+      <!-- Coming Soon Section -->
+      <section class="coming-soon">
+        <h2>More Levels Coming Soon!</h2>
+        <div class="upcoming-levels">
+          <div class="upcoming-level">
+            <h3>⭐⭐⭐⭐⭐⭐</h3>
+            <h3>Respect Your Private Info</h3>
+            <p>Learn to guard your data like your best-kept dance move — not everyone should see it.</p>
           </div>
-          
-          <div style="border-radius: 10px; padding: clamp(10px, 3vw, 15px); width: 100%; max-width: 350px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-            <h3 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem);">⭐⭐⭐⭐⭐⭐⭐</h3>
-            <h3 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: clamp(1rem, 3vw, 1.2rem);">Free WiFi Trap</h3>
-            <p style="color: #ddd; font-family: 'Poppins', sans-serif; font-size: clamp(0.8rem, 2vw, 0.95rem); font-weight: 500;">Learn to spot the risks of free Wi-Fi — not every connection is safe.</p>
+          <div class="upcoming-level">
+            <h3>⭐⭐⭐⭐⭐⭐⭐</h3>
+            <h3>Free WiFi Trap</h3>
+            <p>Learn to spot the risks of free Wi-Fi — not every connection is safe.</p>
           </div>
         </div>
-        
-        <div style="margin-top: clamp(15px, 5vw, 25px);">
-          <a href="https://instagram.com/cyberbear.ai"><button style="background: #234271; color: white; border: none; padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 25px); border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 500; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: clamp(0.8rem, 2vw, 1rem);">Get Notified When Available</button></a>
-        </div>
-      </div>
-            
+        <a href="https://instagram.com/cyberbear.ai" target="_blank" class="certificate-btn">
+          Get Notified When Available
+        </a>
+      </section>
     </div>
-        
-  <footer>
-    <div class="footer">
-      <div class="row">
-        <a href="https://www.instagram.com/cyberbear.ai"><i class="fa fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/cyberbear-ai/"><i class="fa fa-linkedin"></i></a>
-      </div>
-      <div class="row">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="about_us.html">About Us</a></li>
-        </ul>
-      </div>
-      <div class="row">
-        CyberBear © 2025 | All Rights Reserved
-      </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="social-links">
+      <a href="https://www.instagram.com/cyberbear.ai" target="_blank"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/cyberbear-ai/" target="_blank"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      CyberBear © 2025 | All Rights Reserved
     </div>
   </footer>
-  
-  <button class="scroll_top">
-    <img src="public/arrow.png" alt="" id="to_top">
+
+  <!-- 
+  <button class="floating-translate-btn" onclick="activateGoogleTranslate()">
+    <img src="public/translate-icon.png" alt="Translate">
+    <span>Translate</span>
+  </button>
+  <div id="google_translate_element" class="hidden-translate"></div> --->
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" onclick="scrollToTop()">
+    <img src="public/arrow.png" alt="Scroll to top">
   </button>
 
   <script>
-    // Scroll to top functionality
-    const scrollButton = document.querySelector(".scroll_top");
-
-    window.addEventListener("scroll", () => {
-      window.pageYOffset > 100
-        ? scrollButton.classList.add("show-btn")
-        : scrollButton.classList.remove("show-btn");
-    });
-
-    function smoothScrollToTop() {
-      const scrollY = window.pageYOffset;
-      const scrollStep = Math.max(10, Math.floor(scrollY / 20));
-      if (scrollY > 0) {
-        window.scrollBy(0, -scrollStep);
-        requestAnimationFrame(smoothScrollToTop);
-      }
-    }
-
-    scrollButton?.addEventListener("click", () => {
-      requestAnimationFrame(smoothScrollToTop);
-    });
-
     // Music player functionality
-    var isPlaying = false;
-    var audio = document.getElementById('background-music');
-    var musicIcon = document.getElementById('music-icon');
+    let isPlaying = false;
+    let isOriginalColor = true;
+    const audio = document.getElementById('background-music');
+    const musicBtn = document.getElementById('music-btn');
 
-    musicIcon.addEventListener('click', function () {
+    function toggleMusic() {
       if (isPlaying) {
         audio.pause();
         isPlaying = false;
@@ -477,7 +893,37 @@
         });
         isPlaying = true;
       }
+      changeBackgroundColor();
+    }
+
+    function changeBackgroundColor() {
+      if (isOriginalColor) {
+        musicBtn.style.background = 'linear-gradient(90deg, rgb(119,234,253), rgb(119,203,253))';
+      } else {
+        musicBtn.style.background = 'linear-gradient(90deg, rgb(84, 84, 84), rgb(84, 84, 84))';
+      }
+      isOriginalColor = !isOriginalColor;
+    }
+
+    musicBtn.addEventListener('click', toggleMusic);
+
+    // Scroll to top functionality
+    const scrollButton = document.querySelector(".scroll-top");
+
+    window.addEventListener("scroll", () => {
+      window.pageYOffset > 100
+        ? scrollButton.classList.add("show-btn")
+        : scrollButton.classList.remove("show-btn");
     });
+
+    function scrollToTop() {
+      const scrollY = window.pageYOffset;
+      const scrollStep = Math.max(10, Math.floor(scrollY / 20));
+      if (scrollY > 0) {
+        window.scrollBy(0, -scrollStep);
+        requestAnimationFrame(scrollToTop);
+      }
+    }
 
     // Google Translate functionality
     function activateGoogleTranslate() {
