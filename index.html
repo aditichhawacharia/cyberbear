@@ -104,6 +104,60 @@
       opacity: 0.8;
     }
 
+    /* Login/Signup Button */
+    .auth-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+
+    .auth-btn i {
+      font-size: 1.1rem;
+    }
+
+    /* User Profile Button (shown when logged in) */
+    .user-profile-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 20px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .user-profile-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .user-profile-btn i {
+      font-size: 1.2rem;
+    }
+
     /* Read Aloud Button */
     .read-aloud-btn {
       background: linear-gradient(90deg, #ff6b6b, #ff5252);
@@ -119,36 +173,6 @@
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
-    }
-
-    /* Floating Translate Button */
-    .floating-translate-btn {
-      position: fixed;
-      right: 20px;
-      bottom: 80px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--secondary-blue);
-      color: white;
-      padding: 10px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      z-index: 999;
-      font-size: 14px;
-      transition: var(--transition);
-    }
-
-    .floating-translate-btn:hover {
-      background: #3367d6;
-      transform: translateY(-2px);
-      box-shadow: var(--hover-shadow);
-    }
-
-    .floating-translate-btn img {
-      width: 20px;
-      height: 20px;
     }
 
     /* Main Content */
@@ -178,6 +202,48 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    .user-greeting {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .user-greeting .wave {
+      display: inline-block;
+      animation: wave 2s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(20deg); }
+      75% { transform: rotate(-20deg); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .user-name {
+      color: white;
+      font-weight: 800;
+    }
+
+    .journey-text {
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-weight: 600;
+      color: white;
+      margin-top: 0.3rem;
     }
 
     /* Level Cards */
@@ -510,21 +576,6 @@
       filter: invert(1);
     }
 
-    /* Google Translate Styles */
-    .goog-te-banner-frame {
-      display: none !important;
-    }
-
-    .goog-te-gadget {
-      color: transparent !important;
-    }
-
-    .goog-te-menu-frame {
-      box-shadow: var(--shadow);
-      border-radius: 8px !important;
-      max-width: 300px !important;
-    }
-
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .top-nav {
@@ -544,6 +595,11 @@
       .nav-btn img {
         width: 20px;
         height: 20px;
+      }
+
+      .auth-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
       }
 
       .main-content {
@@ -610,13 +666,6 @@
         gap: 15px;
       }
 
-      .floating-translate-btn {
-        right: 15px;
-        bottom: 70px;
-        padding: 8px 12px;
-        font-size: 12px;
-      }
-
       .scroll-top {
         right: 15px;
         bottom: 15px;
@@ -640,6 +689,11 @@
         height: 18px;
       }
 
+      .auth-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+
       .level-card {
         padding: 15px;
       }
@@ -659,17 +713,9 @@
       }
     }
 
-    /* Animation for music icon */
-    @keyframes moveIcon {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(10px, 10px); }
-      50% { transform: translate(0, 20px); }
-      75% { transform: translate(-10px, 10px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    .music-btn.animate {
-      animation: moveIcon 2s ease-in-out;
+    /* Hidden class for toggling elements */
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
@@ -682,8 +728,9 @@
   <!-- Top Navigation -->
   <nav class="top-nav">
     <div class="nav-left">
-      <a href="https://create.kahoot.it/share/beginner-cybersecurity-terms/a13ab7e5-c88c-4319-a977-02916d7c9406" target="_blank" class="nav-btn" title="Kahoot Quiz">
-        <img src="public/multiplayer.png" alt="Kahoot">
+    <h2> 🧸 CyberBear </h2>
+      <a href="index.html" class="nav-btn" title="Home">
+        <img src="public/home.png" alt="Learn">
       </a>
       <a href="cyberfit.html" class="nav-btn" title="Learn More">
         <img src="public/kids.png" alt="Learn">
@@ -696,6 +743,23 @@
       </a>
     </div>
     <div class="nav-right">
+      <!-- Login/Signup Button (shown when not logged in) -->
+      <a href="login.html" class="auth-btn" id="authBtn">
+        <i class="fa fa-user"></i>
+        <span>Login / Sign Up</span>
+      </a>
+      
+      <!-- User Profile Button (shown when logged in) -->
+      <button class="user-profile-btn hidden" id="userProfileBtn">
+        <i class="fa fa-user-circle"></i>
+        <span id="userProfileName">User</span>
+      </button>
+
+        <a href="about_us.html" class="auth-btn" id="authBtn">
+        <i class="fa fa-user"></i>
+        <span>About Us</span>
+      </a>
+      
       <button class="nav-btn read-aloud-btn" id="read-aloud-btn" title="Read Aloud">
         <i class="fa fa-volume-up"></i>
       </button>
@@ -710,9 +774,10 @@
     <div class="container">
       <!-- Header Section -->
       <section class="header-section">
-        <h1 class="main-title">CyberBear</h1>
-        <h2> Gamified Edtech Platform Teaching Youth Social Media & Online Safety </h2>
-        <p> Start Your CyberBear Journey Now! 🐻⬇️ </p>
+        <h3 class="user-greeting">
+         Welcome, <span class="user-name" id="userName">Champion</span>!
+        </h3>
+        <p class="journey-text">Ready to level up your cyber skills?</p>
       </section>
 
       <!-- Levels Container -->
@@ -889,6 +954,93 @@
     <img src="public/arrow.png" alt="Scroll to top">
   </button>
 
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+    import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCjKr-wrV-P79OWaUJV5J2RMvMaJejxSRE",
+      authDomain: "cyberbear-app.firebaseapp.com",
+      projectId: "cyberbear-app",
+      storageBucket: "cyberbear-app.firebasestorage.app",
+      messagingSenderId: "422663014489",
+      appId: "1:422663014489:web:a744166b116cbfc3258948",
+      measurementId: "G-2HNVK9K0L4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const authBtn = document.getElementById('authBtn');
+    const userProfileBtn = document.getElementById('userProfileBtn');
+    const userProfileName = document.getElementById('userProfileName');
+
+    // Load user name from Firebase and toggle auth UI
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          console.log('User logged in:', user.uid);
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            console.log('User data:', userData);
+            
+            // Try multiple possible name fields
+            const userName = userData.name || userData.displayName || user.displayName || 'Champion';
+            console.log('Displaying name:', userName);
+            
+            document.getElementById('userName').textContent = userName;
+            
+            // Update profile button
+            const firstName = userName.split(' ')[0];
+            userProfileName.textContent = firstName;
+          } else {
+            console.log('User document does not exist');
+            const userName = user.displayName || 'Champion';
+            document.getElementById('userName').textContent = userName;
+            userProfileName.textContent = userName.split(' ')[0];
+          }
+          
+          // Show user profile button, hide login button
+          authBtn.classList.add('hidden');
+          userProfileBtn.classList.remove('hidden');
+          
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          const userName = user.displayName || 'Champion';
+          document.getElementById('userName').textContent = userName;
+          userProfileName.textContent = userName.split(' ')[0];
+          
+          // Show user profile button, hide login button
+          authBtn.classList.add('hidden');
+          userProfileBtn.classList.remove('hidden');
+        }
+      } else {
+        console.log('No user logged in');
+        // Show login button, hide user profile button
+        authBtn.classList.remove('hidden');
+        userProfileBtn.classList.add('hidden');
+      }
+    });
+
+    // Add logout functionality to profile button
+    userProfileBtn.addEventListener('click', async () => {
+      const confirmLogout = confirm('Do you want to log out?');
+      if (confirmLogout) {
+        try {
+          await signOut(auth);
+          window.location.reload();
+        } catch (error) {
+          console.error('Error signing out:', error);
+          alert('Error logging out. Please try again.');
+        }
+      }
+    });
+  </script>
+
   <script>
     // Text-to-Speech functionality
     let isSpeaking = false;
@@ -903,14 +1055,13 @@
       const mainTitle = document.querySelector('.main-title');
       if (mainTitle) content.push(mainTitle.textContent);
       
-      // Get header section text
-      const headerSection = document.querySelector('.header-section');
-      if (headerSection) {
-        const h2 = headerSection.querySelector('h2');
-        const p = headerSection.querySelector('p');
-        if (h2) content.push(h2.textContent);
-        if (p) content.push(p.textContent);
-      }
+      // Get greeting
+      const greeting = document.querySelector('.user-greeting');
+      if (greeting) content.push(greeting.textContent);
+      
+      // Get journey text
+      const journeyText = document.querySelector('.journey-text');
+      if (journeyText) content.push(journeyText.textContent);
       
       // Get all level cards
       const levelCards = document.querySelectorAll('.level-card');
@@ -1029,4 +1180,5 @@
   </script>
   <script src="https://www.chatbase.co/embed.min.js" chatbotId="iHUFXP4dziHwbqdmgIfl3" domain="www.chatbase.co" defer></script>
 </body>
+
 </html>

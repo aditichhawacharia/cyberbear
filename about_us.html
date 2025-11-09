@@ -1,772 +1,845 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <link rel="stylesheet" href="./css/global.css" />
-  <link rel="stylesheet" href="./css/index.css" />
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="873b2a6e-8d24-4ef6-ac32-7a22c1691f69"></script>
-  <link rel="stylesheet" href="index.css"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberBear - Youth Cybersecurity Education</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMJMSDJVFT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-PMJMSDJVFT');
-
-    let isOriginalColor = true;
-    function changebackgroundcolor() 
-    {
-    const container = document.querySelector('.music-icon');
-    if (isOriginalColor) 
-    {
-      container.style.background = 'linear-gradient(90deg, rgb(119,234,253) ,rgb(119,203,253))'; //new gradient
-    } 
-    else 
-    {
-      container.style.background = 'linear-gradient(90deg, rgb(84, 84, 84) ,  rgb(84, 84, 84))';//prevoius gradient
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  isOriginalColor = !isOriginalColor;
-} 
-</script>
 
-<style>
-  :root {
-    --padding-xl: 1.25rem;
-    --padding-2xs: 0.688rem;
-    --padding-lg: 1.125rem;
-    --padding-6xl: 1.563rem;
-    --padding-9xl: 1.75rem;
-    --padding-14xl: 2.063rem;
-    --padding-18xl: 2.313rem;
-    --padding-19xl: 2.375rem;
-    --padding-23xl: 2.625rem;
-    --gap-sm: 0.875rem;
-    --gap-base: 1rem;
-    --gap-smi: 0.813rem;
-    --gap-mid: 1.063rem;
-    --gap-14xl: 2.063rem;
-    --gap-16xl: 2.188rem;
-    --gap-46xl: 4.063rem;
-    --gap-48xl: 4.188rem;
-    --gap-51xl: 4.375rem;
-    --gap-112xl: 8.188rem;
-    --gap-xl: 1.25rem;
-    --br-81xl: 6.25rem;
-    --font-size-lgi: 1.188rem;
-    --font-size-3xl: 1.375rem;
-    --font-size-5xl: 1.5rem;
-    --font-size-10xl: 1.813rem;
-    --font-size-17xl: 2.25rem;
-    --font-size-19xl: 2.375rem;
-    --font-size-32xl: 3.188rem;
-    --font-size-45xl: 4rem;
-    --color-black: #000;
-    --color-white: #fff;
-    --color-whitesmoke: #f5f5f5;
-    --font-inter: Inter;
-  }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #212529;
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 0;
+    }
 
-  /* Apply the same styling classes from the provided CSS */
-  body {
-    margin: 0;
-    overflow-x: hidden;
-    font-family: Poppins, sans-serif;
-  }
+    .hidden {
+      display: none !important;
+    }
 
-  .about-section {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4.375rem 5.312rem;
-    background: linear-gradient(252.82deg, #234271 12.23%, #131313 46.38%);
-    color: var(--color-whitesmoke);
-  }
+    /* Navigation */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(35, 66, 113, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
 
-  .about-header {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 3rem;
-  }
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
 
-  .about-title {
-    margin: 0;
-    font-size: var(--font-size-45xl);
-    font-weight: 800;
-    text-shadow: 10px 4px 4px rgba(255, 255, 255, 0.5);
-  }
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
 
-  .about-subtitle {
-    font-size: var(--font-size-5xl);
-    font-weight: 500;
-    color: var(--color-white);
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .about-logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
-
-  .about-logo {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .about-description {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 3rem;
-  }
-
-  .about-paragraph {
-    font-size: var(--font-size-lgi);
-    line-height: 1.6;
-    color: var(--color-white);
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-
-  .highlight {
-    font-weight: 700;
-    color: #77eafd;
-  }
-
-  .services-section {
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 3rem;
-  }
-
-  .services-title {
-    font-size: var(--font-size-17xl);
-    color: var(--color-whitesmoke);
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .services-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .service-card {
-    flex: 1 1 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 1rem;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
-  }
-
-  .service-card:hover {
-    transform: translateY(-10px);
-  }
-
-  .service-number {
-    font-size: var(--font-size-17xl);
-    font-weight: 800;
-    color: #77eafd;
-    margin-bottom: 1rem;
-  }
-
-  .service-title {
-    font-size: var(--font-size-5xl);
-    font-weight: 600;
-    color: var(--color-whitesmoke);
-    margin-bottom: 1rem;
-  }
-
-  .service-description {
-    font-size: var(--font-size-lgi);
-    line-height: 1.6;
-    color: var(--color-white);
-  }
-
-  /* COMMENTED OUT - TEAM SECTION STYLES
-  .team-section {
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 3rem;
-  }
-
-  .team-title {
-    font-size: var(--font-size-17xl);
-    color: var(--color-whitesmoke);
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .team-member {
-    flex: 0 1 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .team-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 3px solid #77eafd;
-  }
-
-  .team-name {
-    font-size: var(--font-size-3xl);
-    font-weight: 600;
-    color: var(--color-whitesmoke);
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    text-align: center;
-  }
-
-  .team-role {
-    font-size: var(--font-size-lgi);
-    color: #77eafd;
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    line-height: 1.3;
-  }
-
-  .team-role-container {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-  */
-
-  .cta-section {
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .cta-title {
-    font-size: var(--font-size-17xl);
-    color: var(--color-whitesmoke);
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  /* Updated CTA button styles */
-  .cta-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-whitesmoke);
-    background: linear-gradient(90deg, #234271, #36648B);
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 200px;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-  }
-
-  .cta-button:hover {
-    background: linear-gradient(90deg, #77eafd, #4682B4);
-    transform: scale(1.05);
-  }
-
-  /* Keep the original style for main CTA button */
-  .cta-section .cta-button {
-    padding: 0.75rem 2rem;
-    font-size: var(--font-size-lgi);
-    border-radius: 2rem;
-    max-width: none;
-  }
-
-  /* Social buttons container */
-  .button-container {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-top: 0.5rem;
-    width: 100%;
-  }
-
-  /* LinkedIn button */
-  .linkedin-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: none;
-    background-color: white;
-    color: #6c63ff;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 200px;
-    transition: all 0.3s ease;
-  }
-
-  .linkedin-button:hover {
-    background-color: #f0f0f0;
-    transform: scale(1.05);
-  }
-
-  /* Icons (reused from original CSS) */
-  .kids-icon {
-    position: fixed;
-    top: 100px;
-    left: 30px;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  .kids-icon:hover{
-    color: blue;
-    transition: all;
-  }
-
-  .multiplayer-icon {
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  .multiplayer-icon:hover{
-    color: blue;
-    transition: all;
-  }
-  
-  .reward-icon {
-    position: fixed;
-    top: 180px;
-    left: 30px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  .reward-icon:hover{
-    color: blue;
-    transition: all;
-  }
-
-  .video-icon {
-    position: fixed;
-    top: 250px;
-    left: 30px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  .video-icon:hover{
-    color:blue;
-    opacity: .6;
-  }
-
-  .music-icon {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  .music-icon:hover {
-    opacity: 0.7;
-  }
-  
-  /* Footer styles (reused from original CSS) */
-  .footer {
-    background: #000;
-    padding: 30px 0px;
-    font-family: 'Play', poppins;
-    text-align: center;
-  }
-
-  .footer .row {
-    width: 100%;
-    margin: 1% 0%;
-    padding: 0.6% 0%;
-    color: gray;
-    font-size: 0.8em;
-  }
-
-  .footer .row a {
-    text-decoration: none;
-    color: gray;
-    transition: 0.5s;
-  }
-
-  .footer .row a:hover {
-    color: #fff;
-  }
-
-  .footer .row ul {
-    width: 100%;
-  }
-
-  .footer .row ul li {
-    display: inline-block;
-    margin: 0px 30px;
-  }
-
-  .footer .row a i {
-    font-size: 2em;
-    margin: 0% 1%;
-  }
-
-  /* Scroll button */
-  .scroll_top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #77eafd;
-    border: none;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  .scroll_top img {
-    width: 25px;
-    height: 25px;
-  }
-
-  .scroll_top.show-btn {
-    display: flex;
-    opacity: 1;
-  }
-
-  /* Media Queries for Responsiveness */
-  @media screen and (max-width: 1425px) {
-    .services-container {
+    .nav-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
     }
-  }
 
-  @media screen and (max-width: 825px) {
-    .about-title {
-      font-size: var(--font-size-32xl);
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
     }
-    
-    .about-subtitle {
-      font-size: var(--font-size-3xl);
-    }
-    
-    .services-title, /* .team-title, */ .cta-title {
-      font-size: var(--font-size-10xl);
-    }
-    
-    .service-number {
-      font-size: var(--font-size-10xl);
-    }
-    
-    .service-title {
-      font-size: var(--font-size-3xl);
-    }
-    
-    .about-section {
-      padding: 2.5rem var(--padding-23xl);
-    }
-  }
 
-  @media screen and (max-width: 450px) {
-    .about-title {
-      font-size: var(--font-size-19xl);
+    .nav-btn img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
-    
-    .about-subtitle {
-      font-size: var(--font-size-lgi);
-    }
-    
-    .about-paragraph {
-      font-size: 1rem;
-    }
-    
-    .services-title, /* .team-title, */ .cta-title {
-      font-size: var(--font-size-5xl);
-    }
-    
-    .service-number {
-      font-size: var(--font-size-5xl);
-    }
-    
-    .service-title {
-      font-size: var(--font-size-lgi);
-    }
-    
-    .service-description {
-      font-size: 1rem;
-    }
-    
-    /* COMMENTED OUT - TEAM RELATED STYLES
-    .team-name {
-      font-size: var(--font-size-lgi);
-    }
-    
-    .team-role {
-      font-size: 1rem;
-    }
-    */
-    
-    .cta-button {
-      padding: 0.5rem 1.5rem;
-      font-size: 1rem;
-    }
-    
-    .about-section {
-      padding: 2rem var(--padding-xl);
-    }
-    
-    .footer .row ul li {
-      display: block;
-      margin: 10px 0px;
-      text-align: left;
-    }
-    
-    .footer .row a i {
-      margin: 0% 3%;
-    }
-    
-    .kids-icon, .multiplayer-icon, .reward-icon, .video-icon, .music-icon {
-      width: 35px;
-      height: 35px;
-    }
-  }
-</style>
 
+    .auth-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .read-aloud-btn {
+      background: linear-gradient(90deg, #ff6b6b, #ff5252);
+    }
+
+    .read-aloud-btn.speaking {
+      background: linear-gradient(90deg, #4CAF50, #45a049);
+      animation: pulse 1.5s infinite;
+    }
+
+    .music-btn {
+      background: linear-gradient(90deg, rgb(84, 84, 84), rgb(84, 84, 84));
+      transition: background 0.3s ease;
+    }
+
+    .music-btn.playing {
+      background: linear-gradient(90deg, rgb(119,234,253), rgb(119,203,253));
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 150px 20px 80px 20px;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: white;
+      padding: 80px 20px;
+      border-bottom: 1px solid #e0e0e0;
+      margin: 0;
+    }
+
+    .stats-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #1a73e8;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #6c757d;
+      font-weight: 500;
+    }
+
+    /* Content Sections */
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+    }
+
+    .section-alt {
+      background: #f8f9fa;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: #6c757d;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Mission Content */
+    .mission-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #495057;
+    }
+
+    .mission-content p {
+      margin-bottom: 25px;
+    }
+
+    .mission-highlight {
+      color: #1a73e8;
+      font-weight: 600;
+    }
+
+    /* Cards Grid */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      border: 1px solid #dee2e6;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 15px;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: #6c757d;
+      line-height: 1.7;
+    }
+
+    /* Curriculum Pills */
+    .curriculum-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .curriculum-pill {
+      background: white;
+      border: 2px solid #1a73e8;
+      color: #1a73e8;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .curriculum-pill:hover {
+      background: #1a73e8;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #0f0f1e;
+      color: white;
+      padding: 60px 20px 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-social a {
+      color: white;
+      font-size: 1.8rem;
+      transition: opacity 0.3s;
+      text-decoration: none;
+    }
+
+    .footer-social a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-copyright {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Scroll Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 90;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-top.show {
+      display: flex;
+    }
+
+    .scroll-top:hover {
+      background: #1557b0;
+      transform: translateY(-4px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-left,
+      .nav-right {
+        gap: 8px;
+      }
+
+      .nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+      }
+
+      .auth-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+      }
+
+      .auth-btn span {
+        display: none;
+      }
+
+      .hero {
+        padding: 120px 20px 50px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .section {
+        padding: 50px 20px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .scroll-top {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <audio id="background-music" loop>
+  <!-- Background Music -->
+  <audio id="backgroundMusic" loop>
     <source src="./audio/back.mp3" type="audio/mpeg">
   </audio>
 
-   <a href="main/level_2/game/wackthehacker.html">
-    <img src="public/reward.png" title="game!" alt="Game Icon" class="reward-icon" id="reward-icon">
-  </a>
+  <!-- Navigation -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <h2 style="color:white; margin: 0;"> 🧸 CyberBear </h2>
+      <a href="index.html" class="nav-btn" title="Home">
+        <i class="fa fa-home"></i>
+      </a>
+      <a href="cyberfit.html" class="nav-btn" title="Learn More">
+        <i class="fa fa-graduation-cap"></i>
+      </a>
+      <a href="main/level_2/game/wackthehacker.html" class="nav-btn" title="Game">
+        <i class="fa fa-gamepad"></i>
+      </a>
+      <a href="vids/vid.html" class="nav-btn" title="Video Guides">
+        <i class="fa fa-video-camera"></i>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="auth-btn" id="authBtn">
+        <i class="fa fa-user"></i>
+        <span>Login</span>
+      </a>
+      <button class="auth-btn hidden" id="userProfileBtn">
+        <i class="fa fa-user"></i>
+        <span id="userProfileName">User</span>
+      </button>
+      <a href="index.html" class="auth-btn">
+        <i class="fa fa-info-circle"></i>
+        <span>Learn</span>
+      </a>
+      <button class="nav-btn read-aloud-btn" id="readAloudBtn" title="Read Aloud">
+        <i class="fa fa-volume-up"></i>
+      </button>
+      <button class="nav-btn music-btn" id="musicBtn" title="Toggle Music">
+        <i class="fa fa-music"></i>
+      </button>
+    </div>
+  </nav>
 
-  <a href="vids/vid.html">
-    <img src="public/video.png" title="video guides" alt="Video Icon" class="video-icon" id="video-icon">
-  </a>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Empowering Youth Through Cybersecurity Education</h1>
+      <p>A gamified learning platform reaching students across 52 countries with essential digital safety skills</p>
+      <p id="userName" style="display:none;"></p>
+    </div>
+  </section>
 
-  <a target="_blank" href="https://create.kahoot.it/share/beginner-cybersecurity-terms/a13ab7e5-c88c-4319-a977-02916d7c9406">
-    <img src="public/multiplayer.png" title="kahoot" alt="Multiplayer Icon" class="multiplayer-icon" id="multiplayer-icon">
-  </a>
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">5,000+</div>
+        <div class="stat-label">Students Educated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">52+</div>
+        <div class="stat-label">Countries Reached</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Student Ambassadors</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1,000+</div>
+        <div class="stat-label">Underserved Youth Served</div>
+      </div>
+    </div>
+  </section>
 
-  <a href="cyberfit.html">
-    <img src="public/kids.png" title="learn!" alt="Kids Icon" class="kids-icon" id="kids-icon">
-  </a>
-
-  <img src="public/music.png" title="music" alt="Music Icon" class="music-icon" id="music-icon" onclick="changebackgroundcolor()">
-
-  <main class="about-section">
-    <section class="about-header">
-      <h1 class="about-title">About CyberBear</h1>
-      <p class="about-subtitle">A <span class="highlight">Gamified</span> Cybersecurity Awareness Platform</p>
-    </section>
-
-    <section class="about-logo-container">
-      <!-- Placeholder for logo - replace src with actual logo path -->
-      <img src="public/cyberbear.jfif" alt="CyberBear Logo" class="about-logo">
-    </section>
-
-    <section class="about-description">
-      <p class="about-paragraph">
-        Welcome to CyberBear, where cybersecurity education meets interactive learning designed specifically <span class="highlight">for youth!</span>
+  <!-- Mission -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Our Mission</h2>
+      <p class="section-subtitle">Making cybersecurity education accessible, engaging, and effective for the next generation</p>
+    </div>
+    <div class="mission-content">
+      <p>
+        With <span class="mission-highlight">95% of teens having smartphone access</span> and <span class="mission-highlight">45% online almost constantly</span>, digital literacy is no longer optional—it's essential. Yet only <span class="mission-highlight">23% of schools</span> offer comprehensive digital safety programs.
       </p>
-      <p class="about-paragraph">
-        In a digital world where <span class="highlight">over 95% of teens have access to smartphones</span> and <span class="highlight"> over 45% report being online "almost constantly," </span>cybersecurity education has never been more critical. Yet studies show that <span class="highlight">only 23% of schools offer  digital safety programs. </span>
+      <p>
+        CyberBear addresses this critical gap through an innovative, gamified approach to cybersecurity education. We transform complex security concepts into interactive experiences that resonate with young learners, building a generation of digitally literate, security-conscious global citizens.
       </p>
-      <p class="about-paragraph">
-        We believe that cybersecurity awareness doesn't have to be complicated or boring. Through our gamified approach, we transform <span class="highlight">internet safety concepts</span> into fun, <span class="highlight">interactive experiences</span> that make learning both enjoyable and effective.  Our platform features specially designed games, quizzes, and interactive lessons that simplify cybersecurity concepts in ways that connect with children and teens.
+      <p>
+        Our platform combines original curriculum development, strategic partnerships, and a growing network of student ambassadors to create scalable, sustainable impact in communities worldwide.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section class="services-section">
-      <h2 class="services-title"><span class="highlight">Specializing In</span></h2>
-      <div class="services-container">
-        <div class="service-card">
-          <div class="service-number">01</div>
-          <h3 class="service-title">Youth-Focused Cybersecurity Education</h3>
-          <p class="service-description">
-            We create fun, engaging, gamified experiences that help kids and teens build their cyber security knowledge. Through CyberBear, we help kids grasp the importance of online safety and how to be safe on the internet. 
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-number">02</div>
-          <h3 class="service-title">Interactive Learning Platforms</h3>
-          <p class="service-description">
-            Our platforms are built for the young to engage them and also instil vital cybersecurity and internet safety knowledge in them. We focus on youth and utilize web development technologies, colorful UI, and games targeted towards to youth to maximize student engagement and knowledge retention.          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-number">03</div>
-          <h3 class="service-title">Technology Integration</h3>
-          <p class="service-description">
-            Currently, our project contains only HTML and CSS code, but we are working to transition it to Next.js. Utilizing Next.js along with Python for backend operations, we aim to create a scalable, responsive, and continuously updated platform.
-          </p>
-        </div>
+  <!-- Key Initiatives -->
+  <section class="section section-alt">
+    <div class="section-header">
+      <h2 class="section-title">Key Initiatives</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3 class="card-title">Global Education Platform</h3>
+        <p class="card-text">
+          Developed a comprehensive gamified learning platform that has reached 5,000+ students across 52 countries, featuring interactive lessons, quizzes, and games designed specifically for youth engagement.
+        </p>
       </div>
-    </section>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3 class="card-title">Social Impact Programs</h3>
+        <p class="card-text">
+          Partnered with 3+ NGOs to deliver virtual digital safety education to 1,000+ rescued child laborers in India, ensuring vulnerable populations receive essential cybersecurity knowledge.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3 class="card-title">Ambassador Network</h3>
+        <p class="card-text">
+          Built and trained a network of 30+ Digital Safety Ambassadors worldwide who actively advocate for youth digital literacy in their local communities and schools.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- COMMENTED OUT - TEAM SECTION
-    <section class="team-section">
-      <h2 class="team-title">Meet Our Team</h2>
-      <div class="team-container">
-        <div class="team-member">
-            <img src="public/aditi.jpg" alt="Aditi C" class="team-photo">
-            <h3 class="team-name">Aditi C</h3>
-        </div>
-        
-        <div class="team-member">
-            <img src="public/vinay.jfif" alt="Vinay K" class="team-photo">
-            <h3 class="team-name">Vinay K</h3>
-            </div>
-        </div>
-      </div>
-    </section>
-    -->
+  <!-- Curriculum -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Original Curriculum</h2>
+      <p class="section-subtitle">Comprehensive, youth-focused digital safety education</p>
+    </div>
+    <div class="curriculum-grid">
+      <div class="curriculum-pill">Social Media Safety</div>
+      <div class="curriculum-pill">Password Security</div>
+      <div class="curriculum-pill">Phishing Prevention</div>
+      <div class="curriculum-pill">Malware Awareness</div>
+      <div class="curriculum-pill">Privacy Protection</div>
+      <div class="curriculum-pill">Digital Citizenship</div>
+      <div class="curriculum-pill">Online Behavior</div>
+      <div class="curriculum-pill">Data Protection</div>
+    </div>
+  </section>
 
-    <section class="cta-section">
-      <h2 class="cta-title">Let's Learn about Internet Safety Together</h2>
-      <div class="cta-buttons">
-        <a href="index.html"><button class="cta-button">Get Started</button></a>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/cyberbear.ai" target="_blank" rel="noopener">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/cyberbear-ai/" target="_blank" rel="noopener">
+          <i class="fa fa-linkedin"></i>
+        </a>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer">
-      <div class="row">
-        <a href="https://www.instagram.com/cyberbear.ai"><i class="fa fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/cyberbear-ai/"><i class="fa fa-linkedin"></i></a>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
       </div>
-      
-      <div class="row">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about_us.html">About Us</a></li>
-        </ul>
-      </div>
-       <div class="row">
-        CyberBear © 2025 | All Rights Reserved
+      <div class="footer-copyright">
+        © 2025 CyberBear. All rights reserved.
       </div>
     </div>
   </footer>
-      
-  <button class="scroll_top">
-    <img src="public/arrow.png" alt="" id="to_top">
-  </button>
+
+  <button class="scroll-top" id="scrollTop">↑</button>
 
   <script>
-    const scrollButton = document.querySelector(".scroll_top");
+    // Music player functionality - FIXED
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isMusicPlaying = false;
+
+    if (musicBtn && backgroundMusic) {
+      musicBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+          backgroundMusic.pause();
+          musicBtn.classList.remove('playing');
+          isMusicPlaying = false;
+        } else {
+          backgroundMusic.play().catch(err => {
+            console.log('Audio play failed:', err);
+          });
+          musicBtn.classList.add('playing');
+          isMusicPlaying = true;
+        }
+      });
+    }
+
+    // Text-to-Speech functionality
+    let isSpeaking = false;
+    let speechSynthesis = window.speechSynthesis;
+    let currentUtterance = null;
+    const readAloudBtn = document.getElementById('readAloudBtn');
+
+    function getPageContent() {
+      const content = [];
+      
+      const hero = document.querySelector('.hero h1');
+      if (hero) content.push(hero.textContent);
+      
+      const heroP = document.querySelector('.hero p');
+      if (heroP) content.push(heroP.textContent);
+      
+      const sectionTitles = document.querySelectorAll('.section-title');
+      sectionTitles.forEach(title => {
+        if (title) content.push(title.textContent);
+      });
+      
+      const missionContent = document.querySelectorAll('.mission-content p');
+      missionContent.forEach(p => {
+        if (p) content.push(p.textContent);
+      });
+      
+      const cardTitles = document.querySelectorAll('.card-title');
+      cardTitles.forEach(title => {
+        if (title) content.push(title.textContent);
+      });
+      
+      return content.join('. ');
+    }
+
+    function toggleReadAloud() {
+      if (isSpeaking) {
+        speechSynthesis.cancel();
+        isSpeaking = false;
+        readAloudBtn.classList.remove('speaking');
+        readAloudBtn.innerHTML = '<i class="fa fa-volume-up"></i>';
+      } else {
+        const text = getPageContent();
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        
+        currentUtterance.rate = 0.9;
+        currentUtterance.pitch = 1;
+        currentUtterance.volume = 1;
+        
+        currentUtterance.onstart = function() {
+          isSpeaking = true;
+          readAloudBtn.classList.add('speaking');
+          readAloudBtn.innerHTML = '<i class="fa fa-stop"></i>';
+        };
+        
+        currentUtterance.onend = function() {
+          isSpeaking = false;
+          readAloudBtn.classList.remove('speaking');
+          readAloudBtn.innerHTML = '<i class="fa fa-volume-up"></i>';
+        };
+        
+        currentUtterance.onerror = function() {
+          isSpeaking = false;
+          readAloudBtn.classList.remove('speaking');
+          readAloudBtn.innerHTML = '<i class="fa fa-volume-up"></i>';
+        };
+        
+        speechSynthesis.speak(currentUtterance);
+      }
+    }
+
+    if (readAloudBtn) {
+      readAloudBtn.addEventListener('click', toggleReadAloud);
+    }
+
+    // Scroll to top functionality
+    const scrollButton = document.getElementById('scrollTop');
 
     window.addEventListener("scroll", () => {
-      window.pageYOffset > 100
-        ? scrollButton.classList.add("show-btn")
-        : scrollButton.classList.remove("show-btn");
-    });
-
-    function smoothScrollToTop() {
-      const scrollY = window.pageYOffset;
-      const scrollStep = Math.max(10, Math.floor(scrollY / 20));
-      if (scrollY > 0) {
-        window.scrollBy(0, -scrollStep);
-        requestAnimationFrame(smoothScrollToTop);
-      }
-    }
-
-    // When the button is clicked, scroll to the top smoothly
-    scrollButton?.addEventListener("click", () => {
-      requestAnimationFrame(smoothScrollToTop);
-    });
-  </script>
-
-  <script>
-    var isPlaying = false;
-    var audio = document.getElementById('background-music');
-    var musicIcon = document.getElementById('music-icon');
-
-    musicIcon.addEventListener('click', function () {
-      if (isPlaying) {
-        audio.pause();
-        isPlaying = false;
+      if (window.pageYOffset > 100) {
+        scrollButton.classList.add("show");
       } else {
-        audio.play().catch(error => {
-          console.log('Error playing audio:', error);
+        scrollButton.classList.remove("show");
+      }
+    });
+
+    if (scrollButton) {
+      scrollButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
-        isPlaying = true;
+      });
+    }
+
+  </script>
+
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+    import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCjKr-wrV-P79OWaUJV5J2RMvMaJejxSRE",
+      authDomain: "cyberbear-app.firebaseapp.com",
+      projectId: "cyberbear-app",
+      storageBucket: "cyberbear-app.firebasestorage.app",
+      messagingSenderId: "422663014489",
+      appId: "1:422663014489:web:a744166b116cbfc3258948",
+      measurementId: "G-2HNVK9K0L4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const authBtn = document.getElementById('authBtn');
+    const userProfileBtn = document.getElementById('userProfileBtn');
+    const userProfileName = document.getElementById('userProfileName');
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          console.log('User logged in:', user.uid);
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            console.log('User data:', userData);
+            
+            const userName = userData.name || userData.displayName || user.displayName || 'Champion';
+            console.log('Displaying name:', userName);
+            
+            const userNameEl = document.getElementById('userName');
+            if (userNameEl) {
+              userNameEl.textContent = userName;
+            }
+            
+            const firstName = userName.split(' ')[0];
+            userProfileName.textContent = firstName;
+          } else {
+            console.log('User document does not exist');
+            const userName = user.displayName || 'Champion';
+            const userNameEl = document.getElementById('userName');
+            if (userNameEl) {
+              userNameEl.textContent = userName;
+            }
+            userProfileName.textContent = userName.split(' ')[0];
+          }
+          
+          authBtn.classList.add('hidden');
+          userProfileBtn.classList.remove('hidden');
+          
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          const userName = user.displayName || 'Champion';
+          const userNameEl = document.getElementById('userName');
+          if (userNameEl) {
+            userNameEl.textContent = userName;
+          }
+          userProfileName.textContent = userName.split(' ')[0];
+          
+          authBtn.classList.add('hidden');
+          userProfileBtn.classList.remove('hidden');
+        }
+      } else {
+        console.log('No user logged in');
+        authBtn.classList.remove('hidden');
+        userProfileBtn.classList.add('hidden');
+      }
+    });
+
+    userProfileBtn.addEventListener('click', async () => {
+      const confirmLogout = confirm('Do you want to log out?');
+      if (confirmLogout) {
+        try {
+          await signOut(auth);
+          window.location.reload();
+        } catch (error) {
+          console.error('Error signing out:', error);
+          alert('Error logging out. Please try again.');
+        }
       }
     });
   </script>
-
-  <!-- Google Translate Element -->
-  <div id="google_translate_element" style="margin: 20px;"></div>
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'af,ar,hy,az,ba,eu,bn,bs,ca,hr,cs,da,nl,en,eo,et,tl,tlh,fi,fr,gaa,ka,de,el,gu,ht,ha,he,hi,hu,is,id,it,ja,jw,kn,kk,km,ko,ku,ky,la,lv,lt,lb,mk,ml,mn,no,ne,pl,pt,pa,ro,ru,sr,si,sk,sl,es,su,sw,sv,ta,te,th,tl,tr,uk,ur,vi,cy,xh,yi,zu',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- Chatbase Script (same as original) -->
-  <script>
-    window.embeddedChatbotConfig = {
-      chatbotId: "iHUFXP4dziHwbqdmgIfl3",
-      domain: "www.chatbase.co"
-    }
-  </script>
-  <script src="https://www.chatbase.co/embed.min.js" chatbotId="iHUFXP4dziHwbqdmgIfl3" domain="www.chatbase.co" defer></script>
 </body>
-
 </html>
