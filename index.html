@@ -755,8 +755,8 @@
         <span id="userProfileName">User</span>
       </button>
 
-        <a href="about_us.html" class="auth-btn" id="authBtn">
-        <i class="fa fa-user"></i>
+        <a href="about_us.html" class="auth-btn" id="aboutBtn">
+        <i class="fa fa-info-circle"></i>
         <span>About Us</span>
       </a>
       
@@ -979,66 +979,93 @@
 
     // Load user name from Firebase and toggle auth UI
     onAuthStateChanged(auth, async (user) => {
+      console.log('Auth state changed. User:', user ? user.uid : 'null');
+      
       if (user) {
         try {
-          console.log('User logged in:', user.uid);
+          console.log('Fetching user document for:', user.uid);
           const userDoc = await getDoc(doc(db, 'users', user.uid));
+          
+          let userName = 'Champion';
           
           if (userDoc.exists()) {
             const userData = userDoc.data();
-            console.log('User data:', userData);
-            
+            console.log('User data from Firestore:', userData);
             // Try multiple possible name fields
-            const userName = userData.name || userData.displayName || user.displayName || 'Champion';
-            console.log('Displaying name:', userName);
-            
-            document.getElementById('userName').textContent = userName;
-            
-            // Update profile button
-            const firstName = userName.split(' ')[0];
-            userProfileName.textContent = firstName;
+            userName = userData.name || userData.displayName || user.displayName || user.email?.split('@')[0] || 'Champion';
           } else {
-            console.log('User document does not exist');
-            const userName = user.displayName || 'Champion';
-            document.getElementById('userName').textContent = userName;
-            userProfileName.textContent = userName.split(' ')[0];
+            console.log('User document does not exist in Firestore');
+            userName = user.displayName || user.email?.split('@')[0] || 'Champion';
+          }
+          
+          console.log('Final userName:', userName);
+          
+          // Update UI with user name
+          const userNameElement = document.getElementById('userName');
+          if (userNameElement) {
+            userNameElement.textContent = userName;
+          }
+          
+          // Update profile button with first name
+          const firstName = userName.split(' ')[0];
+          if (userProfileName) {
+            userProfileName.textContent = firstName;
           }
           
           // Show user profile button, hide login button
-          authBtn.classList.add('hidden');
-          userProfileBtn.classList.remove('hidden');
+          if (authBtn) authBtn.classList.add('hidden');
+          if (userProfileBtn) userProfileBtn.classList.remove('hidden');
           
         } catch (error) {
           console.error('Error fetching user data:', error);
-          const userName = user.displayName || 'Champion';
-          document.getElementById('userName').textContent = userName;
-          userProfileName.textContent = userName.split(' ')[0];
+          
+          // Fallback to basic user info
+          const userName = user.displayName || user.email?.split('@')[0] || 'Champion';
+          const userNameElement = document.getElementById('userName');
+          if (userNameElement) {
+            userNameElement.textContent = userName;
+          }
+          
+          const firstName = userName.split(' ')[0];
+          if (userProfileName) {
+            userProfileName.textContent = firstName;
+          }
           
           // Show user profile button, hide login button
-          authBtn.classList.add('hidden');
-          userProfileBtn.classList.remove('hidden');
+          if (authBtn) authBtn.classList.add('hidden');
+          if (userProfileBtn) userProfileBtn.classList.remove('hidden');
         }
       } else {
-        console.log('No user logged in');
+        console.log('No user logged in - showing login button');
+        // Reset to default
+        const userNameElement = document.getElementById('userName');
+        if (userNameElement) {
+          userNameElement.textContent = 'Champion';
+        }
+        
         // Show login button, hide user profile button
-        authBtn.classList.remove('hidden');
-        userProfileBtn.classList.add('hidden');
+        if (authBtn) authBtn.classList.remove('hidden');
+        if (userProfileBtn) userProfileBtn.classList.add('hidden');
       }
     });
 
     // Add logout functionality to profile button
-    userProfileBtn.addEventListener('click', async () => {
-      const confirmLogout = confirm('Do you want to log out?');
-      if (confirmLogout) {
-        try {
-          await signOut(auth);
-          window.location.reload();
-        } catch (error) {
-          console.error('Error signing out:', error);
-          alert('Error logging out. Please try again.');
+    if (userProfileBtn) {
+      userProfileBtn.addEventListener('click', async () => {
+        if (confirm('Do you want to log out?')) {
+          try {
+            console.log('Signing out user...');
+            await signOut(auth);
+            console.log('Sign out successful');
+            // Reload to reset state
+            window.location.reload();
+          } catch (error) {
+            console.error('Error signing out:', error);
+            alert('Error logging out: ' + error.message);
+          }
         }
-      }
-    });
+      });
+    }
   </script>
 
   <script>
